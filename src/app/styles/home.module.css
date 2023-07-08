@@ -1,0 +1,72 @@
+.banner{
+  background-image: linear-gradient(to left, #0000, #5f5e5e ), url("/home_imgs/banner2.webp");
+  width: 95%;
+  padding: 35vh 0 0 5%;
+  height: 65vh;
+  opacity: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 1s all ease-in ;
+}
+
+.banner2{
+  background-image: linear-gradient(to left, #0000, #5f5e5e ), url("/home_imgs/bannerImg.jpg");
+  width: 95%;
+  padding: 35vh 0 0 5%;
+  height: 65vh;
+  opacity: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 1s all ease-out;
+}
+
+.titleContainer{
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  transition: 1s all ease-out;
+}
+
+.titleContainerDisappear{
+  position: absolute;
+  top: 35%;
+  left: -100%;
+  transition: 1s all ease-out;
+}
+
+.titleContainerDisappear2{
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  transition: 1s all ease-out;
+}
+
+.mainTitle{
+  color: orange;
+  font-size: 14px;
+  font-weight: bold;
+  word-spacing: 3px;
+}
+
+.titleDetails{
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 1% 0;
+  word-spacing: 4px;
+}
+
+/* .titleDisappear{
+
+} */
+
+.qouteBtn{
+  width: 45%;
+  height: 10vh;
+  color: white;
+  font-size: 16px;
+  background-color: orange;
+  border: 1px solid orange;
+  cursor: pointer;
+  border-radius: 5px;
+}
