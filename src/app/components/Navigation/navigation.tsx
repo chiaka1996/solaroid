@@ -1,11 +1,13 @@
+"use client"
 import style from './nav.module.css';
 import Image from 'next/image'
 
 interface prop {
   page: string;
+  toggleBar: () => void;
 }
 
-const navigation = ({page}:prop) => {
+const navigation = ({page, toggleBar}:prop) => {
     return(
         <nav className={style.navContainer}>
             <div className={style.brandName}>Solaroid</div>
@@ -39,6 +41,7 @@ const navigation = ({page}:prop) => {
                 alt="menu bar"
                 width={19}
                 height={14}
+                onClick={() => toggleBar()}
                 />
                 </div>
         </nav>

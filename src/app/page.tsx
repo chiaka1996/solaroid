@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import "./styles/global.css"
 import style from './styles/home.module.css'
-import {Navigation, Footer, Banner, Services, Products, About} from '@/components/index'
+import { Footer, Banner, Services, Products, About} from '@/components/index'
 
 const Home = () => {
   const [bannerImgCount, setBannerImgCount] = useState<number>(0);
@@ -15,7 +15,7 @@ const Home = () => {
   setTimeout(() => increaseBannerCount(), 7000);
   return (
     <div> 
-      <Navigation page="home" />
+      {/* <Navigation page="home" /> */}
        <div className={bannerImgCount === 0 ? style.banner : style.banner2}>
       
       {/* first banner title */}

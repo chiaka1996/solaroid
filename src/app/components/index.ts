@@ -4,4 +4,5 @@ export {default as Navigation} from "./Navigation/navigation"
 export {default as Products} from "./products"
 export {default as Services} from "./services"
 export {default as Footer} from "./Footer"
+export {default as SideBar} from "./Sidebar/sidebar"
  

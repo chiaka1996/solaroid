@@ -1,7 +1,9 @@
-
+"use client"
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
+import {SideBar, Navigation} from "./components"
+import {useState} from 'react'
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,10 +15,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [showBar, setShowBar] = useState<Boolean>(false)
+
+  const toggleBarState = () => {
+    setShowBar(prev => !prev)
+  }
+
   return (
+   
     <html lang="en">
       {/* <body className={inter.className}>{children}</body> */}
-      <body>{children}</body>
+      <body>
+        <Navigation page="home" toggleBar={toggleBarState} />
+        <SideBar page="home" bar={showBar} toggleBar={toggleBarState} />
+        {children}
+      </body>
     </html>
   )
 }
