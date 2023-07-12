@@ -1,43 +1,53 @@
-.banner{
-  background-image: linear-gradient(to left, #0000, #5f5e5e ), url("/home_imgs/banner2.webp");
-  width: 95%;
-  padding: 35vh 0 0 5%;
-  height: 65vh;
-  opacity: 1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: 1s all ease-in ;
+.homeContainer{
+  margin: 8% 0 0 0;
 }
 
-.banner2{
-  background-image: linear-gradient(to left, #0000, #5f5e5e ), url("/home_imgs/bannerImg.jpg");
-  width: 95%;
-  padding: 35vh 0 0 5%;
-  height: 65vh;
-  opacity: 1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: 1s all ease-out;
+.bannerContainer{
+  position: relative;
+}
+
+.bannerImg{
+  position: relative;
+  min-width: 100%;
+  min-height: 96vh;
+  z-index: -10;
+}
+
+.bannerImg::after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
 }
 
 .titleContainer{
   position: absolute;
-  top: 35%;
+  top: 25%;
   left: 5%;
+  opacity: 1;
+  width: 50%;
   transition: 1s all ease-out;
+  z-index: -5;
+  font-family: "Roboto Slab";
 }
 
 .titleContainerDisappear{
   position: absolute;
   top: 35%;
-  left: -100%;
+  left: -300%;
+  opacity: 0;
   transition: 1s all ease-out;
+ 
 }
 
 .titleContainerDisappear2{
   position: absolute;
   top: -100%;
   left: -100%;
+  opacity: 0;
   transition: 1s all ease-out;
 }
 
@@ -50,23 +60,64 @@
 
 .titleDetails{
   color: white;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: bold;
   margin: 1% 0;
   word-spacing: 4px;
 }
-
-/* .titleDisappear{
-
-} */
 
 .qouteBtn{
   width: 45%;
   height: 10vh;
   color: white;
   font-size: 16px;
+  font-weight: bold;
   background-color: orange;
   border: 1px solid orange;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.imgContainer{
+  width: 30%;
+  height: 40vh;
+  position: relative;
+}
+
+@media screen and (max-width: 900px){
+  .titleContainer{
+    width: 100%;
+    top: 40%;
+    left: 0;
+  }
+
+  .mainTitle{
+    color: orange;
+    font-size: 14px;
+    font-weight: bold;
+    word-spacing: 3px;
+    text-align: center;
+  }
+  
+  .titleDetails{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 1% 0;
+    word-spacing: 4px;
+    text-align: center;
+  }
+
+  .qouteBtn{
+    width: 90%;
+    height: 8vh;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: orange;
+    border: 1px solid orange;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2% auto 0 5%;
+  }
 }

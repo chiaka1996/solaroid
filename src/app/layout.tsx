@@ -2,6 +2,8 @@
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
+import { ClashDisplay, Satoshi } from '@/fonts';
+import Head from 'next/head';
 import {SideBar, Navigation} from "./components"
 import {useState} from 'react'
 
@@ -23,10 +25,11 @@ export default function RootLayout({
   }
 
   return (
-   
+    
     <html lang="en">
+     
       {/* <body className={inter.className}>{children}</body> */}
-      <body>
+      <body style={Satoshi.style}>
         <Navigation page="home" toggleBar={toggleBarState} />
         <SideBar page="home" bar={showBar} toggleBar={toggleBarState} />
         {children}

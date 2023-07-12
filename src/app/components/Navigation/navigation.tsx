@@ -12,7 +12,7 @@ const navigation = ({page, toggleBar}:prop) => {
         <nav className={style.navContainer}>
             <div className={style.brandName}>Solaroid</div>
            
-                <div className={style.listContainer}>
+                <div className={style.listContainer} >
                     <div>
                     <span  className={page === 'home' ? style.activeList : style.list}>Home</span>
                     </div>

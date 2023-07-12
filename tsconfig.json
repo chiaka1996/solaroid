@@ -21,7 +21,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./src/app/components/*"]
+      "@/components/*": ["./src/app/components/*"],
+        "@/fonts": ["./src/app/utilis/fonts"]
+     
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

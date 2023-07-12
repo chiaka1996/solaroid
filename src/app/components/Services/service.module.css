@@ -1,0 +1,68 @@
+.serviceContainer{
+    /* background-image: url('/home_imgs/service_banner2.jpg'); */
+    background-image: linear-gradient(to right,rgba(15, 14, 14, 0.75),rgba(15, 14, 14, 0.75),rgba(234, 237, 240, 0.75)), url('/home_imgs/service_banner2.jpg');
+    width: 95%;
+    height: 100%;
+    margin: 10% 0 0 0;
+    background-size: cover;
+    position: relative;
+    padding: 10% 0 6% 5%;
+}
+
+.serviceIntroContainer{
+    width: 45%;
+}
+
+.topLine{
+    background-color: orange;
+    width: 45px;
+    height: 5px;
+    z-index: 30;
+}
+
+.introductionHeader{
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: rgb(207, 203, 203);
+    margin: 3% 0 1.5% 0;
+}
+
+.introCaption{
+    font-size: 45px;
+    font-weight: 800;
+    color: #FFFF;
+    font-family: "Roboto Slab";
+}
+
+.introDetails{
+    margin: 6% 0 3% 0;
+    color: rgb(207, 203, 203);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.serviceGrid{
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    justify-content: space-between;
+}
+
+.gridItem{
+    /* height: 30vh; */
+    background-color: rgb(207, 203, 203);
+    color: rgb(38, 38, 38);
+    font-family: "Roboto Slab";
+    font-size: 20px;
+    margin: 10% 0 0 0;
+    padding: 25% 0;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.gridItemText{
+    margin: 10% 0 0 0;
+}
+

@@ -1,0 +1,154 @@
+.aboutContainer{
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    margin: 5% 5%; 
+    position: relative;
+  
+}
+
+.experience{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 12%;
+    z-index: 1;
+    height: 27vh;
+    background-color: orange;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.numbFive{
+    font-weight: bolder;
+    font-size: 45px;
+}
+
+.imgContainer{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.imgContainer::after{
+    background-color: rgb(249, 235, 209);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 5%;
+    left: 5%;
+    z-index: -1;
+    
+}
+
+.aboutIntro{
+    padding: 5% 5% 0 15%;
+}
+
+.topLine{
+    background-color: orange;
+    width: 7%;
+    height: 5px;
+    margin: 0 0 5% 0;
+}
+
+.introductionHeader{
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: grey;
+}
+
+.introCaption{
+    font-size: 45px;
+    font-weight: 800;
+    color: black;
+    margin: 5% 0;
+    font-family: "Roboto Slab";
+}
+
+.introDetails{
+    color: grey;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 35px;
+}
+
+.introPointers{
+    margin: 5% 0;
+    border-top: 2px solid lightgrey;
+    border-bottom: 2px solid  lightgrey;
+    padding: 4% 0;
+}
+
+.introPointers ul{
+    list-style-type: none;
+}
+
+.introPointers ul li{
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 0 0 5%;
+    line-height: 30px;
+}
+
+.introPointers ul li::before{
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 0;
+    height: 1vh;
+    width: 7px;
+    background-color: orange;
+    margin: 0 0 10% 0;
+}
+
+.learnMoreContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.learnMoreContainer button{
+    background-color: orange;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    width: 30%;
+    height: 8vh;
+    border: 1px solid orange;
+    cursor: pointer;
+}
+
+.phoneNumber{
+    margin: 0 0 0 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+.phoneIconDiv{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 20px 0 0;
+    border-radius: 50%;
+    background-color: rgb(249, 235, 209);
+}
+
+.question{
+    color: grey;
+}
+
+.numberToCall{
+    font-weight: bold;
+}
