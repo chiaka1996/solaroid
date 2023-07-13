@@ -75,7 +75,7 @@
 .introDetails{
     color: grey;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 35px;
 }
 
@@ -93,7 +93,7 @@
 .introPointers ul li{
     position: relative;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     padding: 0 0 0 5%;
     line-height: 30px;
 }

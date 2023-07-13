@@ -1,0 +1,79 @@
+.benefitContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 5%;
+    margin: 5% 0;
+}
+
+.benefitNotes{
+    width: 40%;
+    color: white;
+    padding: 5% 0 0 0;
+}
+
+.benefitImage{
+    width: 50%;
+    /* height: 100%; */
+    position: relative;
+}
+
+.topLine{
+    background-color: orange;
+    width: 45px;
+    height: 5px;
+    z-index: 30;
+}
+
+.introductionHeader{
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: grey;
+    margin: 3% 0 1.5% 0;
+}
+
+.introCaption{
+    font-size: 50px;
+    font-weight: 900;
+    color: black;
+    font-family: "Roboto Slab";
+}
+
+.introDetails{
+    margin: 6% 0 3% 0;
+    color:  grey;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 35px;
+}
+
+.introPointers{
+    color: rgb(40, 40, 40);
+    margin: 5% 0;
+    border-top: 1px solid black;
+    padding: 4% 0;
+}
+
+.introPointers ul{
+    list-style-type: none;
+}
+
+.introPointers ul li{
+    position: relative;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 0 0 5%;
+    line-height: 30px;
+}
+
+.introPointers ul li::before{
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 0;
+    height: 1vh;
+    width: 7px;
+    background-color: orange;
+    margin: 0 0 10% 0;
+}
