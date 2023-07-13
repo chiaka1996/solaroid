@@ -1,0 +1,50 @@
+
+.productContainer{
+    margin: 5% 0;
+    padding: 1% 5%;
+}
+
+.topLine{
+    background-color: orange;
+    margin: 0 auto;
+    width: 45px;
+    height: 5px;
+}
+
+.productHeader{
+    font-size: 45px;
+    font-weight: 800;
+    color: black;
+    margin: 0.5% 0;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+
+.productGrid{
+    padding: 1% 15%;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: space-between;
+}
+
+.gridItem{
+    /* background-color: rgb(248, 245, 245); */
+    background-color: white;
+    height: 40vh;
+    text-align: center;
+    padding: 5% 0;
+    cursor: pointer;
+}
+
+.gridItem:hover{
+    background-color: rgb(248, 245, 245);
+}
+
+.productsName{
+    font-weight: bold;
+    color: orange;
+    font-size: 25px;
+    font-family: "Roboto Slab";
+    text-align: center;
+    margin: 3% 0;
+}

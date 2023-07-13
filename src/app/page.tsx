@@ -51,6 +51,7 @@ const Home = () => {
 
     <About />
     <Services />
+    <Products />
     </div>
   )
 }

@@ -16,6 +16,18 @@ const ServicePage = () => {
             </div>
 
             <div className={style.serviceGrid}>
+            <div className={style.gridItem}>
+                    <Image 
+                    src="https://img.icons8.com/wired/64/idea.png"
+                    alt="project imstallation"
+                    width={50}
+                    height={50}
+                    />
+                    <div className={style.gridItemText}>
+                    PROFESSIONAL CONSULTATION
+                    </div>     
+                </div>
+
                 <div className={style.gridItem}>
                     <Image 
                     src="https://img.icons8.com/ios/50/maintenance--v1.png"
@@ -25,18 +37,6 @@ const ServicePage = () => {
                     />
                     <div className={style.gridItemText}>
                     PROJECT INSTALLATION
-                    </div>     
-                </div>
-
-                <div className={style.gridItem}>
-                    <Image 
-                    src="https://img.icons8.com/wired/64/idea.png"
-                    alt="project imstallation"
-                    width={50}
-                    height={50}
-                    />
-                    <div className={style.gridItemText}>
-                    DEVELOPMENT OF IDEAS
                     </div>     
                 </div>
                 
