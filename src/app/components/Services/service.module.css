@@ -21,7 +21,7 @@
 }
 
 .introductionHeader{
-    font-size: 18px;
+    font-size: 0.9em;
     letter-spacing: 3px;
     font-weight: 700;
     color: rgb(207, 203, 203);
@@ -29,7 +29,7 @@
 }
 
 .introCaption{
-    font-size: 45px;
+    font-size: 3em;
     font-weight: 800;
     color: #FFFF;
     font-family: "Roboto Slab";
@@ -64,5 +64,34 @@
 
 .gridItemText{
     margin: 10% 0 0 0;
+}
+
+@media screen and (max-width: 900px){
+    .serviceContainer{
+        width: 90%;
+        padding: 10% 5%;
+        background-image: linear-gradient(to right,rgba(64, 63, 63, 0.75),rgba(15, 14, 14, 0.75),rgba(15, 14, 14, 0.75)), url('/home_imgs/service_banner2.jpg');
+    }
+
+    .serviceIntroContainer{
+        width: 100%;
+    }
+
+    .introCaption{
+        font-size: 2.3em;
+    }
+
+    .introDetails{
+        margin: 3% 0;
+        line-height: 32px;
+    }
+
+    .serviceGrid{
+        grid-template-columns: 49% 49%;
+    }
+
+    .gridItem{
+        margin: 5% 0 0 0;
+    }
 }
 

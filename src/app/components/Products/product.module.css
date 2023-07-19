@@ -1,4 +1,3 @@
-
 .productContainer{
     margin: 5% 0;
     padding: 1% 5%;
@@ -12,7 +11,7 @@
 }
 
 .productHeader{
-    font-size: 45px;
+    font-size: 3em;
     font-weight: 800;
     color: black;
     margin: 0.5% 0;
@@ -47,4 +46,19 @@
     font-family: "Roboto Slab";
     text-align: center;
     margin: 3% 0;
+}
+
+@media screen and (max-width: 900px){
+    .productContainer{
+        margin: 15% 0;
+    }
+
+    .productHeader{
+        font-size: 2em;
+    }
+
+    .productGrid{
+        display: block;
+        padding: 1% 5%;
+    }
 }

@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import "./styles/global.css"
 import style from './styles/home.module.css'
-import { Footer, Services, Products, About, Benefits} from '@/components/index'
+import { Services, Products, About, Benefits} from '@/components/index'
 
 const Home = () => {
   const [bannerImgCount, setBannerImgCount] = useState<number>(0);
@@ -75,6 +75,7 @@ const Home = () => {
     </div>
     <Benefits />
     </div>
+
   )
 }
 

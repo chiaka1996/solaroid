@@ -1,0 +1,62 @@
+.footerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 5% 10%;
+}
+
+.subFooterLinkBanner{
+    width: 30%;
+}
+
+.subFooterLink{
+    width: 20%;
+}
+
+.subFooterLink ul{
+    list-style-type: none;
+}
+
+.subFooterLink ul li{
+    color: grey;
+    font-weight: bold;
+    line-height: 42px;
+    font-size: 18px;
+    cursor: pointer
+}
+
+.subLinkHeader{
+    font-family: "Roboto Slab";
+    font-weight: 800;
+    font-size: 25px;
+    margin: 0 0 10% 0;
+    color: rgb(228, 227, 227);
+}
+
+.footerBrandName{
+    font-family: "Roboto Slab";
+    font-weight: 800;
+    font-size: 42px;
+    color: white;
+  }
+
+.footerNote{
+    /* font-family: "Roboto Slab"; */
+    font-weight: 400;
+    font-size: 18px;
+    color: grey;
+    margin: 10% 0;
+}
+
+.addressDetails{
+    color: grey;
+    font-size: 18px;
+    margin: 0 0 10% 0;
+}
+
+.email_phone{
+    color: grey;
+    font-size: 18px;
+}

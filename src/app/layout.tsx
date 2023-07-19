@@ -4,7 +4,7 @@
 // const inter = Inter({ subsets: ['latin'] })
 import { ClashDisplay, Satoshi } from '@/fonts';
 import Head from 'next/head';
-import {SideBar, Navigation} from "./components"
+import {SideBar, Navigation, Footer} from "./components"
 import {useState} from 'react'
 
 export const metadata = {
@@ -33,6 +33,7 @@ export default function RootLayout({
         <Navigation page="home" toggleBar={toggleBarState} />
         <SideBar page="home" bar={showBar} toggleBar={toggleBarState} />
         {children}
+        <Footer />
       </body>
     </html>
   )
