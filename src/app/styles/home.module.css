@@ -84,30 +84,6 @@
   position: relative;
 }
 
-.achievementCount{
-  background-color: rgb(243, 164, 243);
-  padding: 5% 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.years{
-  text-align: center;
-  font-weight: 900;
-  font-size: 155px;
-  color: white;
-}
-
-.year_details{
-  color: rgb(40, 40, 40);
-  font-size: 23px;
-  font-weight: 900;
-  font-family: "Roboto Slab";
-  text-align: center;
-}
-
-
 @media screen and (max-width: 900px){
   .titleContainer{
     width: 100%;
@@ -145,10 +121,6 @@
     margin: 2% auto 0 5%;
   }
 
-  .achievementCount{
-    width: 90%;
-    padding: 5% 5%;
-    flex-direction: column;
-  }
+  
 
 }

@@ -60,3 +60,27 @@
     color: grey;
     font-size: 18px;
 }
+
+@media screen and (max-width: 900px){
+    .footerContainer{
+        padding: 7% 5%; 
+        display: block;
+    }
+
+    .subFooterLink, .subFooterLinkBanner{
+        width: 100%;
+        margin: 0 0 2% 0
+    }
+
+    .subLinkHeader{
+        margin: 0 0 1% 0;
+    }
+
+    .footerNote{
+        margin: 5% 0;
+    }
+
+    .addressDetails{
+        margin: 0 0 2% 0;
+    }
+}

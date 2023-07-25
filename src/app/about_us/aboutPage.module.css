@@ -1,0 +1,251 @@
+.bannerContainer{
+    margin: 7% 0 0 0;
+    position: relative;
+}
+
+.bannerImg{
+    height: 60vh;
+    width: 100%;
+    position: relative;
+}
+
+.bannerImg::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+  }
+
+  .bannerTextContainer{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+  }
+
+  .bannerTextHeader{
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+    font-family: "Roboto Slab";
+  }
+
+  .bannerSubText{
+    font-family: "Roboto Slab";
+    font-weight: 800;
+    font-size: 1.2em;
+    color: white;
+    margin:2% 0 0 0;
+  }
+
+  .howWeWork{
+    margin: 7% 0 0 0;
+    background-color: rgb(18, 18, 18);
+    padding: 5% 5%;
+  }
+
+  .topLine{
+    background-color: orange;
+    width: 45px;
+    height: 5px;
+    margin: 0 auto 0 auto;
+}
+
+.howHeader{
+  text-align: center;
+  font-size: 23px;
+  font-family: "Roboto slab";
+  font-weight: 800;
+  color: rgb(237, 237, 237);
+  margin: 0 0 7% 0;
+}
+
+.processGrid{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.step1, .step2, .step3, .step4{
+  width: 23%;
+  margin: 0 0;
+}
+
+.processStep{
+  margin: 3% 0;
+  color: rgb(143, 143, 143);
+  font-size: 14px;
+}
+
+.processNumber{
+  font-weight: 900;
+  font-size: 1.5em;
+  color: rgb(215, 142, 6);
+}
+
+.processHeader{
+  color: rgb(237, 237, 237);
+  font-weight: 600;
+  font-family: "Roboto Slab";
+  font-size: 1.4em;
+  margin: 5% 0;
+}
+
+.topLineSmall{
+  background-color: orange;
+  width: 30px;
+  height: 2px; 
+}
+
+.processNote{
+  margin: 5% 0;
+  color: rgb(143, 143, 143);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ecologicalWay{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5% 5%;
+}
+
+.ecologicalNotes{
+  width: 40%;
+}
+
+.ecologicalImg{
+  position: relative;
+  width: 50%;
+  height: 70vh;
+  z-index: 10;
+  display: block;
+}
+
+.ecologicalImgMobile{
+  display: none;
+}
+
+.ecologicalImg::after{
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 63vh;
+  top: 5%;
+  left: -5%;
+  z-index: -1;
+  background-color: rgb(249, 235, 209);
+}
+
+.topLineEcological{
+  background-color: orange;
+  width: 45px;
+  height: 5px;
+  margin: 15% 0 0 0;
+}
+
+.introductionHeader{
+  font-size: 0.9em;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: grey;
+  margin: 2% 0 0 0;
+}
+
+.introCaption{
+  font-size: 3em;
+  font-weight: 800;
+  color: black;
+  margin: 1% 0 5% 0;
+  font-family: "Roboto Slab";
+}
+
+.introDetails{
+  color: grey;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+.ecologicalEffects{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5% auto 0 auto;
+  width: 90%;
+}
+
+.subHeadContainer{
+  width: 45%;
+}
+
+.subHead{
+  font-size: 1em;
+  font-weight: 800;
+  color: black;
+  margin: 1% 0 5% 0;
+  font-family: "Roboto Slab";
+}
+
+.subHeadNotes{
+  color: grey;
+}
+
+@media screen and (max-width: 900px){
+  .bannerTextContainer{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .bannerSubText{
+    width: 60%;
+    margin: 2% auto;
+  }
+
+  .howWeWork{
+    padding: 10% 5%;
+  }
+
+  .processGrid{
+    flex-direction: column;
+  }
+
+  .step1, .step2, .step3, .step4{
+    width: 100%;
+    margin: 5% 0 5% 0;
+  }
+
+  .ecologicalWay{
+    flex-direction: column;
+  }
+
+  .ecologicalNotes{
+    width: 100%;
+  }
+
+  .ecologicalImgMobile{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    z-index: 10;
+  }
+
+  .ecologicalImg{
+    display: none;
+  }
+
+  .ecologicalEffects{
+    width: 98%;
+  }
+
+  .subHeadContainer{
+    width: 45%;
+  }
+}
