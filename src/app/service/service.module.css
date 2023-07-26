@@ -1,0 +1,127 @@
+.bannerContainer{
+    margin: 7% 0 0 0;
+    position: relative;
+}
+
+.bannerImg{
+    height: 60vh;
+    width: 100%;
+    position: relative;
+}
+
+.bannerImg::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+  }
+
+  .bannerTextContainer{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+  }
+
+  .bannerTextHeader{
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+    font-family: "Roboto Slab";
+  }
+
+  .bannerSubText{
+    font-family: "Roboto Slab";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: white;
+    margin:2% 0 0 0;
+  }
+
+  .servicesContainer{
+    display: grid;
+    grid-template-columns: 30% 30% 30%; 
+    justify-content: space-between;
+    padding: 1% 10%;
+    width: 80%;
+    height: 100%;
+    margin: 5% 0;
+  }
+
+  .serviceOption{
+    margin: 0 0 15% 0;
+    box-shadow: 0 4px rgb(186, 183, 183);
+    border: 1px solid rgb(186, 183, 183);
+  }
+
+  .serviceImg{
+    position: relative;
+    height: 30vh;
+    width: 100%;
+  }
+
+  .serviceIconContainer{
+    position: relative;
+  }
+
+  .serviceIcon{
+    position: absolute;
+    bottom: -12%;
+    right: 5%;
+    background-color: orange;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .serviceMainNote{
+    padding: 10% 10%;
+  }
+
+  .serviceHeader{
+    font-size: 1.5em;
+    font-family: "Roboto Slab";
+    font-weight: 700;
+    color: rgb(38, 38, 38);
+  }
+
+  .serviceLine{
+    background-color: orange;
+    height: 3px;
+    width: 25px;
+    margin: 5% 0;
+  }
+
+  .serviceNotes{
+    color: grey;
+  }
+
+  @media screen and (max-width: 900px){
+    .bannerTextContainer{
+      position: absolute;
+      top: 40%;
+      left: 0;
+      text-align: center;
+      width: 100%;
+    }
+  
+    .bannerSubText{
+      width: 60%;
+      margin: 2% auto;
+    }
+
+    .servicesContainer{
+      display: block;
+      padding: 1% 5%;
+      width: 90%;
+      height: 100%;
+      margin: 5% 0;
+    }
+
+  }
