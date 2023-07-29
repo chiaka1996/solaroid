@@ -2,6 +2,7 @@
 import { ClashDisplay, Satoshi } from '@/fonts';
 import "./styles/global.css"
 import Head from 'next/head';
+import { State } from './context/context';
 import {SideBar, Navigation, Footer} from "./components"
 import {useState} from 'react'
 
@@ -16,11 +17,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const [showBar, setShowBar] = useState<Boolean>(false)
+  // const [showBar, setShowBar] = useState<Boolean>(false)
 
-  const toggleBarState = () => {
-    setShowBar(prev => !prev)
-  }
+  // const toggleBarState = () => {
+  //   setShowBar(prev => !prev)
+  // }
 
   return (
     
@@ -28,10 +29,12 @@ export default function RootLayout({
      
       {/* <body className={inter.className}>{children}</body> */}
       <body style={Satoshi.style}>
-        <Navigation page="home" toggleBar={toggleBarState} />
-        <SideBar page="home" bar={showBar} toggleBar={toggleBarState} />
+        <State>
+        {/* <Navigation page="home" toggleBar={toggleBarState} />
+        <SideBar page="home" bar={showBar} toggleBar={toggleBarState} /> */}
         {children}
         <Footer />
+        </State>
       </body>
     </html>
   )

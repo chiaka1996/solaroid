@@ -155,3 +155,45 @@
   margin: 0 0 7% 0;
  
 }
+
+@media screen and (max-width: 900px){
+  .bannerTextContainer{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .bannerSubText{
+    width: 60%;
+    margin: 2% auto;
+  }
+  
+  .getIntouchContainer{
+    display: block;
+    padding: 0 0;
+  }
+
+  .getIntouchDiv{
+    width: 90%;
+    padding: 10% 5%;
+  }
+
+  .getIntouchForm{
+    width: 90%;
+    padding: 10% 5% 0 5%;
+  }
+
+  .inputContainer input{
+    width: 94%;
+  }
+
+  .textAreaContainer textarea{
+    width: 100%;
+  }
+
+  .getIntouchForm button{
+    width: 50%;
+  }
+}

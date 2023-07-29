@@ -1,9 +1,13 @@
 import Image from "next/image";
+import {SideBar, Navigation} from "../components"
 import style from "./service.module.css";
+
 
 const ServicePage = () => {
     return(
         <main>
+             <Navigation page="services" />
+            <SideBar page="services" /> 
              <section className={style.bannerContainer}>
             <div className={style.bannerImg}>
             <Image

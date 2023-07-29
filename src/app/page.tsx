@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import "./styles/global.css"
 import style from './styles/home.module.css'
-import { Services, Products, About, Benefits, Count} from '@/components/index'
+import { Services, Products, About, Benefits, Count, Navigation, SideBar} from '@/components/index'
 
 const Home = () => {
   const [bannerImgCount, setBannerImgCount] = useState<number>(0);
@@ -17,6 +17,9 @@ const Home = () => {
   setTimeout(() => increaseBannerCount(), 7000);
 
   return (
+    <main>
+    <Navigation page="home" />
+    <SideBar page="home" /> 
     <div className={style.homeContainer}> 
     <div className={style.bannerContainer}>
     <div className={style.bannerImg}>
@@ -54,6 +57,7 @@ const Home = () => {
    <Count />
     <Benefits />
     </div>
+    </main>
 
   )
 }

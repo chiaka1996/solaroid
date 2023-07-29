@@ -1,9 +1,17 @@
+"use client"
 import Image from 'next/image';
 import style from './contact.module.css';
+import {SideBar, Navigation} from "../components"
+import { BarState } from '../context/context';
 
 const ContactPage = () => {
+    const { bar} = BarState();
+
     return(
         <main>
+            <Navigation page="contact" />
+            <SideBar page="contact" /> 
+
             <section className={style.bannerContainer}>
             <div className={style.bannerImg}>
             <Image
