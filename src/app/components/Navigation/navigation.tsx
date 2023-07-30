@@ -12,7 +12,7 @@ const navigation = ({page}:prop) => {
     const { bar, openBar, closeBar } = BarState();
 
     return(
-        <nav className={style.navContainer}>
+        <div className={style.navContainer}>
             <div className={style.brandName}>Solaroid</div>
            
                 <div className={style.listContainer} >
@@ -69,7 +69,7 @@ const navigation = ({page}:prop) => {
                 </div>
                 }
                 
-        </nav>
+        </div>
     )
 }
 
