@@ -1,5 +1,4 @@
 .serviceContainer{
-    /* background-image: url('/home_imgs/service_banner2.jpg'); */
     background-image: linear-gradient(to right,rgba(15, 14, 14, 0.75),rgba(15, 14, 14, 0.75),rgba(234, 237, 240, 0.75)), url('/home_imgs/service_banner2.jpg');
     width: 95%;
     height: 100%;

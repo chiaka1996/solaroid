@@ -1,4 +1,3 @@
-
 import { ClashDisplay, Satoshi } from '@/fonts';
 import "./styles/global.css"
 import { State } from './context/context';

@@ -6,4 +6,5 @@ export {default as Footer} from "./Footer/Footer"
 export {default as SideBar} from "./Sidebar/sidebar"
 export {default as Benefits} from "./Benefits/benefits"
 export {default as Count} from "./AchievementCount/count"
+export {default as Banner} from "./ProductsBanner/banner"
  

@@ -1,0 +1,120 @@
+.productContainer{
+    margin: 5% 0;
+    padding: 1% 5%;
+}
+
+.topLine{
+    background-color: orange;
+    margin: 0 auto;
+    width: 45px;
+    height: 5px;
+}
+
+.productHeader{
+    font-size: 3em;
+    font-weight: 800;
+    color: black;
+    margin: 0.5% 0;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+
+.productGrid{
+    padding: 1% 15%;
+    display: grid;
+    grid-template-columns: 22% 22% 22% 22%;
+    justify-content: space-between;
+}
+
+.gridItem{
+    background-color: white;
+    height: 37vh;
+    text-align: center;
+    padding: 5% 0;
+    cursor: pointer;
+}
+
+.prodImage{
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.gridItem:hover{
+    background-color: rgb(248, 245, 245);
+}
+
+.productsName{
+    font-weight: 400;
+    color: black;
+    font-size: 16px;
+    text-align: left;
+    width: 90%;
+    margin: 3% 5%;
+}
+
+.cost{
+    font-weight: 400;
+    color: black;
+    font-size: 16px;
+    text-align: left;
+    width: 90%;
+    margin: 3% 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.price{
+    margin: -2% 0 0 0;
+}
+
+.addToCartBtn{
+    background-color: orange;
+    padding: 2% 0;
+    color: white;
+    width: 90%;
+    border: 1px solid orange;
+    margin: 2% 5%;
+    border-radius: 10px;
+    display: none;
+}
+
+.gridItem:hover > .addToCartBtn{
+    display: block;
+}
+
+@media screen and (max-width: 900px){
+    .productContainer{
+        margin: 15% 0;
+    }
+
+    .productHeader{
+        font-size: 2em;
+    }
+
+    .productGrid{
+        padding: 1% 0;
+        display: grid;
+        grid-template-columns: 48% 48%;
+        justify-content: space-between;
+    }
+
+    .gridItem{
+        background-color:rgb(248, 245, 245);;
+        height: 100%;
+        padding: 5% 0 1% 0;
+    }
+
+    .prodImage{
+        width: 90%;
+        height: 200px;
+        position: relative;
+    }
+
+    .addToCartBtn{
+        display: block;
+        margin: 0 5%;
+    }
+    
+}
