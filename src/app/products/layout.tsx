@@ -3,10 +3,10 @@ import { ClashDisplay, Satoshi } from '@/fonts';
 import Head from 'next/head';
 import {SideBar, Navigation, Footer} from "@/components/index"
 
-export const metadata = {
-  title: 'solaroid solar company',
-  description: 'product page for solaroid',
-}
+// export const metadata = {
+//   title: 'solaroid solar company',
+//   description: 'product page for solaroid',
+// }
 
 export default function RootLayout({
   children,
