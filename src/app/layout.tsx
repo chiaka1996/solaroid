@@ -1,7 +1,6 @@
 
 import { ClashDisplay, Satoshi } from '@/fonts';
 import "./styles/global.css"
-import Head from 'next/head';
 import { State } from './context/context';
 import {SideBar, Navigation, Footer} from "./components"
 
@@ -17,7 +16,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <State>
+    // <State>
     <html lang="en">
       <body style={Satoshi.style}>
         <main>
@@ -28,6 +27,6 @@ export default function RootLayout({
          </main> 
       </body>
     </html>
-  </State> 
+  // </State> 
   )
 }
