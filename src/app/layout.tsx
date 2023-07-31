@@ -16,17 +16,14 @@ export default function RootLayout({
 }) {
 
   return (
-    // <State>
+   
     <html lang="en">
       <body style={Satoshi.style}>
-        <main>
-       
+      <State>
         {children}
-         {/* <Footer /> */}
-       
-         </main> 
+      </State> 
+         <Footer />
       </body>
     </html>
-  // </State> 
   )
 }
