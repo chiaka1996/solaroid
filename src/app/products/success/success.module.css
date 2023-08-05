@@ -1,0 +1,53 @@
+.successContainer{
+    position: relative;
+    font-style: normal;
+}
+
+.successSubContainer{
+    text-align: center;
+    padding: 5% 0 10% 0;
+    margin: 5% 0 0 0;
+}
+
+.successNote{
+    font-weight: 500;
+    font-size: 38px;
+    color: #000000;
+}
+
+.successSubNote{
+    font-weight: 400;
+    font-size: 28px;
+    padding: 1% 0 0 0;
+    color: #000000;
+}
+
+@media only screen and (max-width: 1000px) {
+    .successSubContainer{
+        text-align: center;
+        padding: 20% 0 10% 0;
+    }
+    .ellipse1{
+        display: none;
+    }
+
+    .ellipse2{
+        display: none;
+    }
+
+    .successNote{
+        padding: 10% 0 3% 0;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .successImage{
+        width: 270px;
+        height: 240px;
+    }
+
+    .successSubNote{
+        font-size: 14px;
+        color: #000000;
+    }
+}

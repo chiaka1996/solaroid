@@ -17,7 +17,7 @@ const Battery = () => {
                 <div className={style.prodImage}>
                 <Image 
                 src="/home_imgs/battery.png"
-                alt="solar panel"
+                alt="battery"
                fill
                 />
                 </div>

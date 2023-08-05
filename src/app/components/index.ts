@@ -7,4 +7,5 @@ export {default as SideBar} from "./Sidebar/sidebar"
 export {default as Benefits} from "./Benefits/benefits"
 export {default as Count} from "./AchievementCount/count"
 export {default as Banner} from "./ProductsBanner/banner"
+export {default as Cart} from "./Cart/cart"
  
