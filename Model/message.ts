@@ -20,8 +20,11 @@ const messageSchema = new Schema({
         type: String,
         required: true
     }
-
-});
+},
+{
+    timestamps: true
+}
+);
 
 const Messages = models.message ||  model('message', messageSchema);
 
