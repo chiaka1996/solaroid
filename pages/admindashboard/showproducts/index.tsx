@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./showproduct.module.css";
 import Image from 'next/image';
+import Link from "next/link";
 
 interface productTypes{
     _id: string,
@@ -19,9 +20,10 @@ interface productTypes{
 }
 
 
-const ShowProducts = () => {
+const ShowProducts =  () => {
     const [allProducts, setAllProducts] = useState<productTypes[]>([])
 
+    // fetch all products from the database
     const fetchAllProducts = async () => {
         const httpRequest = await fetch('../../api/getallproducts', {
             method: 'GET',
@@ -40,6 +42,34 @@ const ShowProducts = () => {
           });
        }
         
+    }
+
+    // delete product from the database
+    const deleteSingleProduct = async (_id:string) => {
+        console.log("working")
+        const httpRequest = await fetch('../../api/deleteproduct', {
+            method: 'POST',
+            body: JSON.stringify(_id),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        let response = await httpRequest.json() 
+        if(response.status){
+            toast.success(`${response.message}`, {
+                position: "top-right",
+                theme: "colored",
+              });
+
+            fetchAllProducts();
+       }
+       else{
+        toast.error(`${response.message}`, {
+            position: "top-right",
+            theme: "colored",
+          });
+       }
     }
 
     useEffect(() => {
@@ -64,6 +94,23 @@ const ShowProducts = () => {
                 // check if the product category is Battery and display it
                 allProducts.map((prod, i) => prod.productCategory === "Battery" ?
                 <div className={style.product} key={i}>
+                 <Link
+                    href={{
+                        pathname: "/admindashboard/addproducts",
+                        query: {
+                            _id: prod._id,
+                            productImage: prod.productImage,
+                            availableQuantity: prod.availableQuantity,
+                            productName: prod.productName,
+                            productDescription: prod.productDescription,
+                            productCategory: prod.productCategory,
+                            productPrice: prod.productPrice, 
+                            productQualities: prod.productQualities,
+                            cloudinaryId: prod.cloudinaryId
+                        }
+                    }}
+                > 
+                <div>
                 <div className={style.imgContainer}>
                     <Image
                         src={prod.productImage}
@@ -81,12 +128,15 @@ const ShowProducts = () => {
                 />
                 <div>{prod.productPrice}</div>
                 </div>
+                </div>
+                </Link>
                 <div  className={style.deletebin}>
                 <Image
                 width={24} 
                 height={24} 
                 src="https://img.icons8.com/material-rounded/24/FA5252/filled-trash.png"  
                 alt="filled-trash"
+                onClick = {() => deleteSingleProduct(prod._id)}
                 />
                 </div>
                 </div> : '')
@@ -103,6 +153,22 @@ const ShowProducts = () => {
                 // check if the product category is Panel and display it
                 allProducts.map((prod, i) => prod.productCategory === "Panel" ?
                 <div className={style.product} key={i}>
+                    <Link
+                    href={{
+                        pathname: '/admindashboard/addproducts',
+                        query: {
+                            _id: prod._id,
+                            productImage: prod.productImage,
+                            availableQuantity: prod.availableQuantity,
+                            productName: prod.productName,
+                            productDescription: prod.productDescription,
+                            productCategory: prod.productCategory,
+                            productPrice: prod.productPrice,
+                            productQualities: prod.productQualities
+                         }
+                    }}
+                >
+                    <div>
                 <div className={style.imgContainer}>
                     <Image
                         src={prod.productImage}
@@ -110,7 +176,9 @@ const ShowProducts = () => {
                         layout="fill"
                     />
                 </div>
+                
                 <div className={style.nameOfProduct}>{prod.productName}</div>
+                
                 <div className={style.priceOfProduct}>
                 <Image 
                 width={16} 
@@ -120,12 +188,15 @@ const ShowProducts = () => {
                 />
                 <div>{prod.productPrice}</div>
                 </div>
+                </div>
+                </Link>
                 <div  className={style.deletebin}>
                 <Image
                 width={24} 
                 height={24} 
                 src="https://img.icons8.com/material-rounded/24/FA5252/filled-trash.png"  
                 alt="filled-trash"
+                onClick = {() => deleteSingleProduct(prod._id)}
                 />
                 </div>
                 </div> : '')
@@ -141,6 +212,22 @@ const ShowProducts = () => {
                 // check if the product category is Inverter and display it
                 allProducts.map((prod, i) => prod.productCategory === "Inverter" ?
                 <div className={style.product} key={i}>
+                    <Link
+                    href={{
+                        pathname: '/admindashboard/addproducts',
+                        query: {
+                            _id: prod._id,
+                            productImage: prod.productImage,
+                            availableQuantity: prod.availableQuantity,
+                            productName: prod.productName,
+                            productDescription: prod.productDescription,
+                            productCategory: prod.productCategory,
+                            productPrice: prod.productPrice,
+                            productQualities: prod.productQualities
+                         }
+                    }}
+                > 
+                <div>
                 <div className={style.imgContainer}>
                     <Image
                         src={prod.productImage}
@@ -158,12 +245,15 @@ const ShowProducts = () => {
                 />
                 <div>{prod.productPrice}</div>
                 </div>
+                </div>
+                </Link>
                 <div  className={style.deletebin}>
                 <Image
                 width={24} 
                 height={24} 
                 src="https://img.icons8.com/material-rounded/24/FA5252/filled-trash.png"  
                 alt="filled-trash"
+                onClick = {() => deleteSingleProduct(prod._id)}
                 />
                 </div>
                 </div> : '')

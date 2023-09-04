@@ -2,7 +2,7 @@ import ConnectMongo from '../../utilis/MongoDb/connectDb';
 import modelMessage from '../../Model/message';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const DeleteProduct = async (req:NextApiRequest, res:NextApiResponse) => {
+const DeleteMessage = async (req:NextApiRequest, res:NextApiResponse) => {
     try{
         await ConnectMongo();
         const {id} = req.body;
@@ -33,4 +33,4 @@ const DeleteProduct = async (req:NextApiRequest, res:NextApiResponse) => {
     }
 }
 
-export default DeleteProduct;
+export default DeleteMessage;

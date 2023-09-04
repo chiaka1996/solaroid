@@ -1,5 +1,7 @@
 .addProductContainer{
     margin: 0 0 0 10%;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 .topBar{
@@ -10,7 +12,7 @@
 }
 
 .formHouse{
-    padding: 4% 10% 0 10%;
+    padding: 3% 10% 2% 10%;
 }
 
 .formContainer{
@@ -28,7 +30,7 @@
 }
 
 .inputContainer input[type='text'], .inputContainer select{
-    width: 97%;
+    width: 100%;
     height: 50px;
     padding: 0 0 0 3%;
     border-radius: 8px;
@@ -49,7 +51,7 @@
 }
 
 .inputContainer textarea{
-    width: 94%;
+    width: 100%;
     height: 20vh;
     padding: 1% 3%;
     border-radius: 8px;
@@ -58,9 +60,9 @@
 }
 
 .addBtn{
-    width: 80%;
+    width: 100%;
     height: 60px;
-    margin: 2% 0 0 10%;
+    margin: 2% 0 0 0;
     background-color: blue;
     color: white;
     border: 1px solid blue;

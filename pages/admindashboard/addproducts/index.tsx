@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AdminNav } from "../../../components/index";
 import style from "./addproduct.module.css";
+import { useRouter } from 'next/router'
 let FormData = require('form-data');
+import Image from "next/image";
 
 interface productTypes{
     availableQuantity: string,
@@ -15,7 +17,7 @@ interface productTypes{
 }
 
 const AddProducts = () => {
-
+    const router = useRouter();
     const [productImage, setProductImage] = useState<File | null>()
     const [loading,setLoading] = useState<boolean>(false)
     const [product, setProduct] = useState<productTypes>({
@@ -26,6 +28,28 @@ const AddProducts = () => {
         productPrice: "",
         productQualities: ''
     })
+
+
+    // check if the router has data.
+    // if the router has data, then the page will be used to edit
+    // if it contains data, populate the input fields with it.
+    // if it does not, then prompt the user to add product 
+    useEffect(() => {
+    if(!router.isReady) return;
+    if(router.query){
+         setProduct({
+            productName: router.query.productName && !Array.isArray(router.query.productName) ?  router.query.productName : '',
+             availableQuantity: router.query.availableQuantity && !Array.isArray(router.query.availableQuantity) ?  router.query.availableQuantity : '',
+             productDescription: router.query.productDescription && !Array.isArray(router.query.productDescription) ?  router.query.productDescription : '', 
+             productCategory: router.query.productCategory && !Array.isArray(router.query.productCategory) ?  router.query.productCategory : '', 
+             productPrice: router.query.productPrice && !Array.isArray(router.query.productPrice) ?  router.query.productPrice : '',
+             productQualities: router.query.productQualities && !Array.isArray(router.query.productQualities) ?  router.query.productQualities : ''
+         })
+    }
+    
+    },[router.isReady])
+
+
 
     // change the value of the product state as the corresponding input value changes
     const onChangeInput = (event:any) => {  
@@ -47,7 +71,75 @@ const AddProducts = () => {
         }
     }
 
-    const submitBtn = async () => {
+    // function for editing the function
+    const submitEditBtn:MouseEventHandler<HTMLButtonElement> = async () => {
+        try{
+            setLoading(true)
+            const {productName, availableQuantity, productDescription, productCategory, productPrice, productQualities} = product;
+            if(!productName || !productDescription || !productCategory || !productPrice || !productQualities){
+                setLoading(false)
+                return  toast.error("please fill all required fields.", {
+                position: "top-right",
+                theme: "colored",
+                });
+                }
+
+            let formdata = new FormData();
+              formdata.append('productImage', productImage)
+              formdata.append('availableQuantity', availableQuantity)
+              formdata.append('productName', productName)
+              formdata.append('productDescription', productDescription)
+              formdata.append('productCategory', productCategory)
+              formdata.append('productPrice', productPrice)
+              formdata.append('productQualities', productQualities)
+              formdata.append('cloudinaryId', router.query.cloudinaryId)
+
+    
+            //add product to the database
+            const addProduct = await fetch('../../api/editproduct', {
+                method: 'POST',
+                body: formdata,
+
+            })
+    
+                let response = await addProduct.json()   
+                if(response.status){
+                    setLoading(false)
+                    setProduct({
+                        availableQuantity: '',
+                        productName: '',
+                        productDescription: "",
+                        productCategory: "",
+                        productPrice: "",
+                        productQualities: ''
+                    })
+                    toast.success(`${response.message}`, {
+                        position: "top-right",
+                        theme: "colored",
+                      });
+
+                    router.push("/admindashboard/addproducts")
+                }  
+                else{
+                    setLoading(false)
+                    toast.error(`${response.message}`, {
+                        position: "top-right",
+                        theme: "colored",
+                      });
+                }
+         }
+        catch(error:any){
+            setLoading(false)
+        toast.error(`${error.message}`, {
+        position: "top-right",
+        theme: "colored",
+      });
+        }
+    }
+
+
+    // function for adding product
+    const submitBtn:MouseEventHandler<HTMLButtonElement> = async () => {
         try{
             setLoading(true)
             const {productName, availableQuantity, productDescription, productCategory, productPrice, productQualities} = product;
@@ -91,6 +183,8 @@ const AddProducts = () => {
                         position: "top-right",
                         theme: "colored",
                       });
+
+                    router.push("/admindashboard/addproducts")
                 }  
                 else{
                     setLoading(false)
@@ -130,6 +224,17 @@ const AddProducts = () => {
                 required
                 />
                 </div>
+                 {/* in case of an edit, display the product image */}
+                 {
+                    router.query ? 
+                    router.query.productImage && !Array.isArray(router.query.productImage) ? 
+                    <Image src={router.query.productImage} 
+                    width={100} 
+                    height={100} 
+                    alt="product" 
+                    />: ""
+                     : ""
+                }
                 
                 <div className={style.formContainer}>
                 <div className={style.form1}>
@@ -203,14 +308,21 @@ const AddProducts = () => {
                 </div>
                 </div>
                 </div>
-                </div>
-                
-                <button 
+
+                {router.query._id ? <button 
+                className={style.addBtn} 
+                onClick={submitEditBtn}
+                >
+                {loading ? "saving..." : "Edit Product"}
+                </button> : <button 
                 className={style.addBtn} 
                 onClick={submitBtn}
                 >
                 {loading ? "saving..." : "Add Product"}
-                </button>
+                </button> }
+
+
+                </div>
             </section>
         </main>
     )

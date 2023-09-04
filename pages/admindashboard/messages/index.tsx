@@ -44,7 +44,42 @@ const Message = () => {
         }
     }
 
-    console.log(allMessages)
+    // on calling this function, the message with the particular id will be deleted
+    const deleteMessage = async (id:string) => {
+        try{
+            const httpRequest = await fetch('../../../api/deletemessage',
+            {
+                method: "POST",
+                body: JSON.stringify(id),
+                headers: {
+                    "Content-Type": "application/json",
+                  }
+            });
+
+            let response = await httpRequest.json() 
+            if(response.status){
+                setModalShow(false)
+                toast.success(`${response.message}`, {
+                    position: "top-right",
+                    theme: "colored",
+                    });
+                fetchAllMessages();
+                return true;
+            }
+            else{
+                return   toast.error(`${response.message}`, {
+                position: "top-right",
+                theme: "colored",
+                });
+            }
+        }
+        catch(err:any){
+            return toast.error("please reload page", {
+                position: "top-right",
+                theme: "colored",
+                });
+        }
+    }
 
     useEffect(() => {
         fetchAllMessages()
@@ -94,26 +129,23 @@ const Message = () => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <div className={style.emailContainer}>
+        <span>email:</span>
+        {allMessages.length > 0 ? allMessages[msgIndex].email : ""}
+        </div>
         <p>
          {allMessages.length > 0 ? allMessages[msgIndex].message : ""}
         </p>
       </Modal.Body>
       <Modal.Footer>
         {/* <Button onClick={()=>setModalShow(false)}>Close</Button> */}
-        <div  className={style.editImg}>
-        <Image 
-        width={20} 
-        height={20} 
-        src="https://img.icons8.com/material-outlined/20/8FE809/edit--v1.png" 
-        alt="edit--v1"
-        />
-        </div>
         <div  className={style.deleteImg}>
         <Image
         width={20}
         height={20} 
         src="https://img.icons8.com/material-outlined/20/FF0000/filled-trash.png" 
         alt="filled-trash"
+        onClick={() => deleteMessage(allMessages[msgIndex]._id)}
         />
         </div>
       </Modal.Footer>

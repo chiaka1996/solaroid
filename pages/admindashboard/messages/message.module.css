@@ -30,6 +30,12 @@
     text-align: center;
 }
 
+.emailContainer{
+    margin: 0 0 3% 0;
+}
+
+.emailContainer
+
 .deleteImg{
     margin: 0 0 0 2%;
     cursor: pointer;
