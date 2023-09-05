@@ -1,6 +1,6 @@
 // import 'bootstrap/dist/css/bootstrap.css'
 // import styles from '../Styles/Home.module.css'
-import { Satoshi } from "../utilis/fonts";
+// import { Satoshi } from "../utilis/fonts";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.css';
 import {Footer} from "../components/index";
