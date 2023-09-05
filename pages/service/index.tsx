@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {SideBar, Navigation} from "../../components"
+import {SideBar, Navigation, Footer} from "../../components"
 import style from "./service.module.css";
 
 
@@ -197,6 +197,7 @@ const ServicePage = () => {
             </section>
             </div>
             </section>
+            <Footer />
         </main>
     )
 }

@@ -103,7 +103,6 @@
   margin: 5% 0;
   color: rgb(143, 143, 143);
   font-size: 16px;
-  font-weight: 600;
 }
 
 .ecologicalWay{
@@ -144,7 +143,7 @@
   background-color: orange;
   width: 45px;
   height: 5px;
-  margin: 15% 0 0 0;
+  margin: 12% 0 0 0;
 }
 
 .introductionHeader{
@@ -165,8 +164,7 @@
 
 .introDetails{
   color: grey;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 18px;
   line-height: 35px;
 }
 
@@ -192,6 +190,7 @@
 
 .subHeadNotes{
   color: grey;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 900px){

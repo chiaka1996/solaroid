@@ -3,7 +3,7 @@ import Image from 'next/image';
 import style from './contact.module.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {SideBar, Navigation} from "../../components"
+import {SideBar, Navigation, Footer} from "../../components"
 import { BarState } from '../../context/context';
 import { useState } from 'react';
 
@@ -241,6 +241,7 @@ const ContactPage = () => {
                 </button>
                 </div>
              </section>
+             <Footer />
         </main>
     )
 }

@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import {About, Count, Navigation, SideBar} from '../../components/index'
+import {About, Count, Navigation, SideBar, Footer} from '../../components/index'
 import style from "./aboutPage.module.css";
 
 const AboutPage = () => {
@@ -169,6 +169,7 @@ const AboutPage = () => {
                 </div>
             </section>
             <Count />
+            <Footer />
         </main>
     )
 }

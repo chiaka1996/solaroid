@@ -3,7 +3,6 @@
 // import { Satoshi } from "../utilis/fonts";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.css';
-import {Footer} from "../components/index";
 // import '../styles/loading.css'
 // import 'animate.css';
 import {State} from "../context/context"
@@ -14,7 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <State>
     <div>
   <Component {...pageProps} />
-  {/* <Footer /> */}
   </div>
   </State>
   )

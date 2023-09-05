@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import style from '../styles/home.module.css'
-import { Services, Products, About, Benefits, Count, Navigation, SideBar} from '../components/index'
+import { Services, Products, About, Benefits, Count, Navigation, SideBar, Footer} from '../components/index'
 
 const Home = () => {
   const [bannerImgCount, setBannerImgCount] = useState<number>(0);
@@ -56,7 +56,9 @@ const Home = () => {
     <Products />
    <Count />
     <Benefits />
+    <Footer />
     </div>
+  
     </main>
 
   )

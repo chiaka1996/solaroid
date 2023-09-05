@@ -37,8 +37,8 @@
 .introDetails{
     margin: 6% 0 3% 0;
     color: rgb(207, 203, 203);
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 17px;
+    /* font-weight: 400; */
     line-height: 35px;
 }
 
