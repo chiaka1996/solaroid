@@ -34,7 +34,7 @@
   
   }
   
-  .list{
+  .list, .listName{
     /* font-family: "satoshi"; */
     font-weight: 600;
     font-size: 16px;
@@ -78,17 +78,51 @@
     background-color: orange;
     border-radius: 1%;
   }
-  
-  .cartBtn{
-    width: 12%;
-    padding: 1%;
-    border: 1px solid orange;
-    background-color: orange;
-    color: white;
-    font-weight: bold;
+
+  .productList{
+    position: relative;
+  }
+
+  .hideContent{
+    display: none;
+  }
+
+  .dropdownContent{
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(245, 245, 245);
+    width: 120px;
+    padding: 2% 5%;
+    font-size: 14px;
+    color: black;
+  }
+
+  .dropdownContent div{
+    padding: 5% 0 5% 5%;
+    cursor: pointer;
+    font-weight: light;
+  }
+
+  .cartDiv{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+  }
+
+  .cartImage{
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+
+  .navPhone{
+    margin: 0 0 0 40px;
     font-size: 16px;
-    display: inline-block;
-  } 
+    display: flex;
+    color: orangered;
+  }
 
   @media screen and (max-width: 900px){
     .hamburger{

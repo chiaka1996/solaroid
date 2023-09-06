@@ -1,4 +1,4 @@
-"use client"
+import {useState} from 'react'
 import Link from 'next/link';
 import style from './nav.module.css';
 import Image from 'next/image'
@@ -8,8 +8,13 @@ interface prop {
   page: string;
 }
 
-const navigation = ({page}:prop) => {
+const Navigation = ({page}:prop) => {
     const { bar, openBar, closeBar } = BarState();
+    const [displayProduct, setDisplayProduct] = useState<boolean>(false)
+
+    const togglePorduct = () => {
+        setDisplayProduct((prev) => !prev);
+    }
 
     return(
         <div className={style.navContainer}>
@@ -31,10 +36,26 @@ const navigation = ({page}:prop) => {
                     <span className={page === 'services' ? style.activeList : style.list}>Services</span>
                     </Link>
                     </div>
-                     <div>
-                    <Link href="/Products" style={{textDecoration: "none"}}>
-                    <span className={page === 'products' ? style.activeList : style.list}>Products</span>
+                     <div className={style.productList}>
+                    <span 
+                    className={page === 'products' ? style.activeList : style.listName}
+                    onClick={togglePorduct}
+                    >
+                    Products
+                    </span>
+                    <div className={displayProduct ? style.dropdownContent : style.hideContent}>
+                    <Link href="/products/battery" style={{textDecoration: "none"}}>
+                    <div>Batteries</div>
                     </Link>
+
+                    <Link href="/products/panel" style={{textDecoration: "none"}}>
+                    <div>Panels</div>
+                    </Link>
+
+                    <Link href="/products/inverter" style={{textDecoration: "none"}}>
+                    <div>Inverters</div>
+                    </Link>
+                    </div>
                     </div>
                      <div>
                      <Link href="/contact_us" style={{textDecoration: "none"}}>
@@ -44,9 +65,31 @@ const navigation = ({page}:prop) => {
 
                 </div>
 
-                <button className={style.cartBtn}>
-                    cart
-                </button>
+               <div className={style.cartDiv}>
+                <div  className={style.cartImage}>
+                <Link href="/products/cart" style={{textDecoration: "none"}}>
+               <Image
+                width={50}
+                height={50}
+                src="https://img.icons8.com/ios/50/shopping-cart--v1.png" 
+                alt="shopping-cart--v1"
+                />
+                </Link>
+                </div>
+
+                <div className={style.navPhone}>
+                <Image 
+                width={24}
+                height={24} 
+                src="https://img.icons8.com/ios/24/ff4500/phone--v1.png" 
+                alt="phone--v1"
+                />    
+               <span> +2348084052359</span>
+                </div>
+               </div>
+
+               
+                
                 
                 {
                     !bar ? <div className={style.hamburger}>
@@ -73,4 +116,4 @@ const navigation = ({page}:prop) => {
     )
 }
 
-export default navigation;
+export default Navigation;
