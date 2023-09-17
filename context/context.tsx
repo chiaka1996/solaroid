@@ -1,16 +1,40 @@
-'use client'
 import { createContext, useState, useContext, ReactNode, useEffect } from "react";
+import { useRouter } from 'next/router';
+
+interface cartItemTypes{
+  _id: string,
+  productImage: string,
+  availableQuantity: string,
+  productName: string,
+  productDescription: string,
+  productCategory: string,
+  productPrice: string,
+  productQualities: string,
+  productQuantity: string,
+  cloudinaryId: string
+}
 
 type barContextType = {
     bar: boolean;
     openBar: () => void;
     closeBar: () => void;
+    cartItems: cartItemTypes[];
+    addToCart: (x:cartItemTypes) => void
+    deleteFromCart: (n:number) => void
+    increaseItemQuantity: (n:number) => void
+    decreaseItemQuantity: (n:number) => void
 }
+
 
 const barContextDefaultValues: barContextType = {
     bar: false,
     openBar: () => {},
-    closeBar: () => {}
+    closeBar: () => {},
+    cartItems: [],
+    addToCart: (x:cartItemTypes) => {},
+    deleteFromCart: (n:number) => {},
+    increaseItemQuantity: (n:number) => {},
+    decreaseItemQuantity: (n:number) => {}
 }
 
 const BarContext = createContext<barContextType>(barContextDefaultValues);
@@ -24,7 +48,9 @@ type Props = {
   };
 
   export const State = ({ children }: Props) => {
-
+    const router = useRouter();
+    const [cartItems, setCartItems] = useState<cartItemTypes[]>([]);
+    const [cartPriceList, setCartPriceList] = useState<number[]>([]);
     const [bar, setBar] = useState<boolean>(false)
 
     const openBar = () => {
@@ -35,10 +61,99 @@ type Props = {
         setBar(false);
       };
 
+      //function for adding items to the cart
+      const addToCart = (x:cartItemTypes) => {
+        //check if item exist in cart already
+        for (let c = 0; c < cartItems.length; c++) {
+          if (cartItems[c]._id == x._id) {
+            router.push('/products/cart')
+            return;
+          }
+        }
+
+        // add cartItem prices to separate array
+        setCartPriceList(list => [...list, parseInt(x.productPrice)]);
+        localStorage.setItem(
+          'solaroidCartPriceList',
+          JSON.stringify([...cartPriceList, parseInt(x.productPrice)])
+        );
+        
+        //update item price based on the quantity selected
+        const priceResult = parseInt(x.productPrice,10) * parseInt(x.productQuantity);
+        x.productPrice = priceResult.toString();
+        setCartItems(ite => [...ite, x]);
+        localStorage.setItem('solaroidCartItem', JSON.stringify([...cartItems, x]));
+        router.push('/products/cart')
+      }
+
+      //function for deleting an item from cart
+      const deleteFromCart = (n: number) => {
+        cartItems.splice(n, 1);
+        cartPriceList.splice(n,1)
+        localStorage.setItem('solaroidCartItem', JSON.stringify([...cartItems]));
+        localStorage.setItem('solaroidCartPriceList', JSON.stringify([...cartPriceList]));
+        router.push('/products/cart')
+      }
+
+      // increase item quantity in cart
+      const increaseItemQuantity = (n: number) => {
+       
+       let mapper = cartItems.map((item, i) => {
+          if (n == i) {
+            item.productPrice = ((parseInt(item.productQuantity) + 1) * cartPriceList[n]).toString();
+            item.productQuantity = (parseInt(item.productQuantity) + 1).toString();
+            return item;
+          }
+          else{
+            return item;
+          }
+
+        });
+    setCartItems([...mapper]);
+    localStorage.setItem('solaroidCartItem', JSON.stringify([...mapper]));
+  };
+
+
+    // decrease item quantity in cart
+  const decreaseItemQuantity = (n: number) => {
+    let mapper = cartItems.map((item, i) => {
+      if (n == i) {
+        if (parseInt(item.productQuantity) > 1) {
+        item.productPrice = ((parseInt(item.productQuantity) -1) * cartPriceList[n]).toString();
+        item.productQuantity = (parseInt(item.productQuantity) - 1).toString();
+        }
+        return item;
+      }
+      else{
+        return item;
+      }
+    });
+    setCartItems([...mapper]);
+    localStorage.setItem('solaroidCartItem', JSON.stringify([...mapper]));
+  };
+
+      useEffect(() => {
+        //get all datas in localstorage and update the states.
+        let productsInCart = localStorage.getItem('solaroidCartItem');
+        productsInCart = productsInCart ? JSON.parse(productsInCart) : '';
+        productsInCart && typeof productsInCart !== "string" ? setCartItems(productsInCart) : '';
+
+        let pricesInCart = localStorage.getItem('solaroidCartPriceList');
+        pricesInCart = pricesInCart ? JSON.parse(pricesInCart) : '';
+        pricesInCart && typeof pricesInCart !== "string" ? setCartPriceList(pricesInCart) : '';
+
+      },[])
+
       const value = {
         bar,
         openBar,
-        closeBar
+        closeBar,
+        cartItems,
+        cartPriceList,
+        addToCart,
+        deleteFromCart,
+        increaseItemQuantity,
+        decreaseItemQuantity
       }  
       
       return (

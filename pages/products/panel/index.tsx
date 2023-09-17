@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Banner, Navigation, SideBar, Footer } from "../../../components/index";
 import Image from "next/image";
+import { BarState } from '../../../context/context';
 import style from "../product.module.css";
 
 interface productTypes{
@@ -19,12 +20,13 @@ interface productTypes{
 }
 
 const Panel = () => {
+    const { addToCart, cartItems } = BarState();
     const [panelProduct, setPanelProduct] = useState<productTypes[]>([]);
 
     // fetch all panel products from the database
     const fetchAllPanelProducts = async () => {
         try{
-        const httpRequest = await fetch('../../api/getproductbycategory?category=Battery', {
+        const httpRequest = await fetch('../../api/getproductbycategory?category=Panel', {
             method: 'GET',
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -83,7 +85,23 @@ const Panel = () => {
                 />
                 <div className={style.price}>{prod.productPrice}</div>
                 </div>
-                <button className={style.addToCartBtn}>Add to Cart</button>
+                <button 
+                className={style.addToCartBtn}
+                onClick={() => addToCart({
+                    _id: prod._id,
+                    productImage: prod.productImage,
+                    availableQuantity: prod.availableQuantity,
+                    productName: prod.productName,
+                    productDescription: prod.productDescription,
+                    productCategory: prod.productCategory,
+                    productPrice: prod.productPrice,
+                    productQualities: prod.productQualities,
+                    productQuantity: '1',
+                    cloudinaryId: prod.cloudinaryId
+                })}
+                >
+                Add to Cart
+                </button>
             </div>
              )}
            </div>

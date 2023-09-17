@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Banner, Navigation, SideBar, Footer } from "../../../components/index";
 import Image from "next/image";
 import style from "../product.module.css";
+import { BarState } from '../../../context/context';
 
 interface productTypes{
     _id: string,
@@ -20,6 +21,7 @@ interface productTypes{
 
 
 const Inverters = () => {
+    const { addToCart } = BarState();
     const [inverterProduct, setInverterProduct] = useState<productTypes[]>([]);
 
      // fetch all inverter products from the database
@@ -84,7 +86,21 @@ const Inverters = () => {
                 />
                 <div className={style.price}>{prod.productPrice}</div>
                 </div>
-                <button className={style.addToCartBtn}>Add to Cart</button>
+                <button 
+                className={style.addToCartBtn}
+                onClick={() => addToCart({
+                    _id: prod._id,
+                    productImage: prod.productImage,
+                    availableQuantity: prod.availableQuantity,
+                    productName: prod.productName,
+                    productDescription: prod.productDescription,
+                    productCategory: prod.productCategory,
+                    productPrice: prod.productPrice,
+                    productQualities: prod.productQualities,
+                    productQuantity: '1',
+                    cloudinaryId: prod.cloudinaryId
+                })}
+                >Add to Cart</button>
             </div>
              )}
             </div>

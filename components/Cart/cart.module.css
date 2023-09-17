@@ -94,9 +94,17 @@
 
 .price{
     font-weight: 400;
-    font-size: 36px;
-    line-height: 49px;
+    font-size: 24px;
     color: #292929;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nairaImg{
+    width: 26px;
+    height: 26px;
+    position: relative;
 }
 
 .checkout{
@@ -175,6 +183,12 @@
     line-height: 38px;
     text-align: right;
     color: #888888;
+}
+
+.totalPrice{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .checkoutDetails:last-child{

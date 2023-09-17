@@ -1,45 +1,72 @@
 import cs from './cart.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { BarState } from '../../context/context';
 
 const CartComponent = () => {
+    const {cartItems, deleteFromCart, increaseItemQuantity, decreaseItemQuantity} = BarState();
+
+    const [totalSumOfProduct, setTotalSum] = useState<number>(5000);
+
+    let totalPrice: number = 0;
+    for (let t = 0; t < cartItems.length; t++) {
+      totalPrice = totalPrice + parseInt(cartItems[t].productPrice);
+    }
+
     return(
         <div>
              <section className={cs.cartItems}>
-              <div className={cs.item}>
+              {cartItems.map((item, i) => <div className={cs.item} key={i}>
                 <div className={cs.cartImgContainer}>
-                  <Image src='/home_imgs/battery.png' alt="cart list" layout="fill" />
+                  <Image src={item.productImage} alt="cart list" layout="fill" />
                 </div>
                 <div className={cs.itemDetails}>
                   <div className={cs.itemHeader}>
-                    <header>Battery</header>
+                    <header>{item.productName}</header>
                     <div className={cs.cancelContainer}>
                       <Image
-                        src="/cartCancel.png"
+                        src="/icons/cancel.png"
                         alt="cancel item"
                         width={12}
                         height={12}
-                        // onClick={() => deleteFromCart(i)}
+                        onClick={() => deleteFromCart(i)}
                       />
                     </div>
                   </div>
 
                   <div className={cs.itemCount}>
                     <div className={cs.quantity}>
-                      <span >- </span>{' '}
-                        3
-                      <span> +</span>
+                      <span
+                      onClick={() => decreaseItemQuantity(i)}
+                      >
+                      - 
+                      </span>{' '}
+                        {item.productQuantity}
+                      <span  
+                      onClick={() => increaseItemQuantity(i)}> 
+                      +
+                      </span>
                     </div>
                     <div className={cs.price}>
-                      {/* ${Math.round(item.price * 10) / 10} */}
-                      N3000
+                      <div className={cs.nairaImg}>
+                    <Image 
+                      // width={10} 
+                      // height={10} 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                      <div>{Math.round(parseInt(item.productPrice) * 10) / 10}</div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> )}
+              
             
           </section>
-          <section className={cs.checkout}>
+          {cartItems.length > 0 ? <section className={cs.checkout}>
             {/* this div only shows on desktop */}
           
               <div style={{ width: '35%' }} className={cs.proceedDesktop}>
@@ -63,16 +90,36 @@ const CartComponent = () => {
             <div className={cs.checkoutDetailsContainer}>
               <div className={cs.checkoutDetails}>
                 <div>Products in cart :</div>{' '}
-                <span> items</span>
+                <span> {cartItems.length} item{cartItems.length > 1 ? "s" : ''}</span>
               </div>
               <div className={cs.checkoutDetails}>
-                <div>Shipping :</div>
-                <span>$500</span>
+                <div>Shipping :</div> 
+                <div className={cs.totalPrice}>
+                <div className={cs.nairaImg}>
+                    <Image 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                      <span>5000</span>
+                      </div>   
               </div>
+
               <div className={cs.checkoutDetails}>
                 <div>Total :</div>
-                <span>$500,000</span>
+                <div className={cs.totalPrice}>
+                <div className={cs.nairaImg}>
+                    <Image 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                <span>{totalPrice + 5000}</span>
+                </div>
               </div>
+
             </div>
             {/* this div only shows on mobile */}
             {/* {page == 'cart' ? ( */}
@@ -99,7 +146,7 @@ const CartComponent = () => {
             {/* ) : (
               ''
             )} */}
-          </section>
+          </section> : ''}
         </div>
     )
 }
