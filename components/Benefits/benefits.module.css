@@ -34,7 +34,7 @@
 }
 
 .introCaption{
-    font-size: 50px;
+    font-size: 3em;
     font-weight: 900;
     color: black;
     font-family: "Roboto Slab";
@@ -43,7 +43,7 @@
 .introDetails{
     margin: 6% 0 3% 0;
     color:  grey;
-    font-size: 18px;
+    font-size: 1.1em;
     line-height: 35px;
 }
 
@@ -56,11 +56,12 @@
 
 .introPointers ul{
     list-style-type: none;
+    padding: 0 0;
 }
 
 .introPointers ul li{
     position: relative;
-    font-size: 16px;
+    font-size: 0.9;
     padding: 0 0 0 5%;
     line-height: 30px;
 }
@@ -92,8 +93,8 @@
     }
 
     .introDetails{
-        font-size: 1.2em;
-        font-weight: 700;
+        font-size: 1.1em;
+        /* font-weight: 700; */
     }
 
     .introPointers ul li::before{

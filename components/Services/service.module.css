@@ -67,7 +67,7 @@
 
 @media screen and (max-width: 900px){
     .serviceContainer{
-        width: 90%;
+        width: 100%;
         padding: 10% 5%;
         background-image: linear-gradient(to right,rgba(64, 63, 63, 0.75),rgba(15, 14, 14, 0.75),rgba(15, 14, 14, 0.75)), url('/home_imgs/service_banner2.jpg');
     }

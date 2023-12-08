@@ -1,9 +1,17 @@
-import {Navigation, SideBar, Cart } from "../../../components/index";
+import {Navigation, SideBar } from "../../../components/index";
 import Link from "next/link";
 import Image from "next/image";
 import cs from './shipping.module.css'
+import { BarState } from '../../../context/context';
+
 
 const Shipping = () => {
+  const {cartItems} = BarState()
+
+  let totalPrice: number = 0;
+    for (let t = 0; t < cartItems.length; t++) {
+      totalPrice = totalPrice + parseInt(cartItems[t].productPrice);
+    }
     return(
         <main>
         <Navigation page="products" />  
@@ -16,15 +24,12 @@ const Shipping = () => {
         <div className={cs.details}>
           <div className={cs.active}>Shipping details</div>
         </div>
-        <div className={cs.payment}>
-          <div className={cs.list}>Payment details</div>
-        </div>
       </div>
 
       <section className={cs.shippingContainer}>
         <div className={cs.gridItem1}>
           <div className={cs.inputContainer}>
-            <label>Your email</label>
+            <label>Email</label>
             <input
               type="email"
               name="email"
@@ -38,7 +43,7 @@ const Shipping = () => {
           </div>
 
           <div className={cs.inputContainer}>
-            <label>Your full name</label>
+            <label>Full name</label>
             <input
               type="text"
               placeholder="Big cj"
@@ -46,15 +51,6 @@ const Shipping = () => {
               name="fullName"
             //   onChange={onChangeCustomerDetails}
             />
-          </div>
-
-          <div className={cs.inputContainer}>
-            <label>Country</label>
-            <select
-              name="country"
-            >
-              <option value="nigeria">Nigeria</option>
-            </select>
           </div>
 
           <div className={cs.postalContainer}>
@@ -97,12 +93,11 @@ const Shipping = () => {
 
         <div className={cs.gridItem2}>
           <>
-            {/* {cartItems.map((prod, i) => ( */}
-              <section className={cs.cartItems}>
+            {cartItems.map((prod, i) => <section className={cs.cartItems} key={i}>
                 <div className={cs.item}>
                   <div>
                     <Image
-                      src='/home_imgs/battery.png'
+                      src={prod.productImage}
                       alt="cart list"
                       width={150}
                       height={160}
@@ -110,40 +105,59 @@ const Shipping = () => {
                   </div>
                   <div className={cs.itemDetails}>
                     <div className={cs.itemHeader}>
-                      <header>Battery</header>
-                      {/* <div className={cs.cancelContainer}>
-                        <Image
-                          src="/cartCancel.png"
-                          alt="cancel item"
-                          width={10}
-                          height={10}
-                        />
-                      </div> */}
+                      <header>{prod.productName}</header>
                     </div>
                     <div className={cs.itemCount}>
-                      <div className={cs.quantity}>Qty: 2</div>
-                      <div className={cs.price}>N3000</div>
+                      <div className={cs.quantity}>Qty: {prod.productQuantity}</div>
+                      <div className={cs.price}>
+                      <div className={cs.totalPrice}>
+                    <div className={cs.nairaImg}>
+                    <Image 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                      <span>{prod.productPrice}</span>
+                      </div>
+                        </div>
                     </div>
                   </div>
                 </div>
               </section>
+            )}
 
             <section className={cs.checkout}>
               <div>
                 <div className={cs.checkoutDetails}>
                   <div>Products in cart :</div>{' '}
-                  <span>2 items</span>
+                  <span>{cartItems.length} items</span>
                 </div>
                 <div className={cs.checkoutDetails}>
                   <div>Shipping :</div>
-                  <span>N3000</span>
+                  <div className={cs.totalPrice}>
+                <div className={cs.nairaImg}>
+                    <Image 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                      <span>5000</span>
+                      </div>
                 </div>
                 <div className={cs.checkoutDetails}>
                   <div>Total :</div>
-                  <span>
-                    {/* ${Math.round((totalPrice + shippingFee) * 10) / 10} */}
-                    N3000
-                  </span>
+                  <div className={cs.totalPrice}>
+                <div className={cs.nairaImg}>
+                    <Image 
+                      layout='fill'
+                      src="https://img.icons8.com/material-outlined/26/naira.png" 
+                      alt="naira"
+                      />
+                      </div>
+                      <span>{Math.round((totalPrice + 5000) * 10) / 10}</span>
+                      </div>
                 </div>
               </div>
             </section>

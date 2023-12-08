@@ -1,13 +1,12 @@
 import cs from './cart.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
 import { BarState } from '../../context/context';
+import { useRouter } from 'next/router'
 
 const CartComponent = () => {
+  const router = useRouter();
     const {cartItems, deleteFromCart, increaseItemQuantity, decreaseItemQuantity} = BarState();
-
-    const [totalSumOfProduct, setTotalSum] = useState<number>(5000);
 
     let totalPrice: number = 0;
     for (let t = 0; t < cartItems.length; t++) {
@@ -71,18 +70,16 @@ const CartComponent = () => {
           
               <div style={{ width: '35%' }} className={cs.proceedDesktop}>
                 <Link
-                  href={`/cart/shipping`}
+                  href={'/products/shipping_details'}
                   style={{ textDecoration: 'none' }}
                 >
                   <button>Proceed to checkout</button>
                 </Link>
-                <div className={cs.continue}>
-                  <Link
-                    href={`/market/products`}
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <span>Continue Shopping</span>
-                  </Link>
+                <div 
+                className={cs.continue}
+                onClick={() => router.back()}
+                >
+                <span>Continue Shopping</span>
                 </div>
               </div>
            
@@ -125,7 +122,7 @@ const CartComponent = () => {
             {/* {page == 'cart' ? ( */}
               <div className={cs.proceedMobile}>
                 <Link
-                  href={`/cart/shipping`}
+                  href={'/products/shipping_details'}
                   style={{ textDecoration: 'none' }}
                 >
                   <div className={cs.btnHouse}>
@@ -134,14 +131,13 @@ const CartComponent = () => {
                     </button>
                   </div>
                 </Link>
-                <Link
-                  href={`/market/products`}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <div className={cs.continue}>
+                  <div 
+                  className={cs.continue}
+                  onClick={() => router.back()}
+                  >
                     <span>Continue Shopping</span>
                   </div>
-                </Link>
+                
               </div>
             {/* ) : (
               ''

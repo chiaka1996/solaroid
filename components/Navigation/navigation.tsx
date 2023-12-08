@@ -86,18 +86,14 @@ const Navigation = ({page}:prop) => {
                 />    
                <span> +2348084052359</span>
                 </div>
-               </div>
 
-               
-                
-                
                 {
                     !bar ? <div className={style.hamburger}>
                     <Image
                     src="/icons/hamburger.png"
                     alt="menu bar"
-                    width={19}
-                    height={14}
+                    width={20}
+                    height={20}
                     onClick={openBar}
                     />
                     </div> : 
@@ -111,6 +107,7 @@ const Navigation = ({page}:prop) => {
                     />
                 </div>
                 }
+               </div>
                 
         </div>
     )
