@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import { useRouter } from 'next/router'
+import { Dropdown } from "antd";
 import Link from 'next/link';
 import style from './nav.module.css';
 import Image from 'next/image'
@@ -10,11 +12,23 @@ interface prop {
 
 const Navigation = ({page}:prop) => {
     const { bar, openBar, closeBar } = BarState();
-    const [displayProduct, setDisplayProduct] = useState<boolean>(false)
+    const router = useRouter();
 
-    const togglePorduct = () => {
-        setDisplayProduct((prev) => !prev);
-    }
+    const items = [
+        {
+          label: (<div onClick={() => router.push("/products/battery")}>Batteries</div>),  
+          key: "0",
+        },
+        {
+            label: <div onClick={() => router.push("/products/panel")}>Panels</div>,
+            key: "1",
+          },
+          {
+            label: <div onClick={() => router.push("/products/inverter")}>Inverters</div>,
+            key: "2",
+          },
+      ];
+
 
     return(
         <div className={style.navContainer}>
@@ -39,23 +53,12 @@ const Navigation = ({page}:prop) => {
                      <div className={style.productList}>
                     <span 
                     className={page === 'products' ? style.activeList : style.listName}
-                    onClick={togglePorduct}
+                    // onClick={togglePorduct}
                     >
-                    Products
+                    <Dropdown menu={{ items }} trigger={["click"]}>
+                     <span>Products</span>
+                    </Dropdown> 
                     </span>
-                    <div className={displayProduct ? style.dropdownContent : style.hideContent}>
-                    <Link href="/products/battery" style={{textDecoration: "none"}}>
-                    <div>Batteries</div>
-                    </Link>
-
-                    <Link href="/products/panel" style={{textDecoration: "none"}}>
-                    <div>Panels</div>
-                    </Link>
-
-                    <Link href="/products/inverter" style={{textDecoration: "none"}}>
-                    <div>Inverters</div>
-                    </Link>
-                    </div>
                     </div>
                      <div>
                      <Link href="/contact_us" style={{textDecoration: "none"}}>

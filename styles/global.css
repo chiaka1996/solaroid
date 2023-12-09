@@ -5,3 +5,54 @@
     margin: 0;
     font-family: "Roboto Slab";
 }
+
+.pageLoaderInactive{
+    display: none;
+    visibility: none;
+
+}
+
+.pageLoader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: orange;
+    animation-name: lineLoader;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    z-index: 50000;
+}
+
+@keyframes lineLoader{
+    0%{
+        width: 0;
+    }
+    10%{
+        width: 10%;
+    }
+    25%{
+        width: 25%;
+    }
+    35%{
+        width: 35%;
+    }
+    50%{
+        width: 50%;
+    }
+    65%{
+        width: 65%;
+    }
+    75%{
+        width: 75%;
+    }
+    85%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+}
