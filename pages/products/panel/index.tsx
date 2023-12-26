@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Banner, Navigation, SideBar, Footer } from "../../../components/index";
+import { Banner, Navigation, SideBar, Footer, ProductItem } from "../../../components/index";
 import Image from "next/image";
 import { BarState } from '../../../context/context';
 import style from "../product.module.css";
@@ -67,41 +67,7 @@ const Panel = () => {
 
             <div className={style.productGrid}>
             {panelProduct.map((prod, i) => <div className={style.gridItem} key={i}>
-                <div className={style.prodImage}>
-                <Image 
-                src={prod.productImage}
-                alt="battery"
-                layout='fill'
-                />
-                </div>
-
-                <div className={style.productsName}>{prod.productName}</div>
-                <div className={style.cost}>
-                <Image 
-                width={16} 
-                height={16} 
-                src="https://img.icons8.com/material-outlined/16/naira.png" 
-                alt="naira"
-                />
-                <div className={style.price}>{prod.productPrice}</div>
-                </div>
-                <button 
-                className={style.addToCartBtn}
-                onClick={() => addToCart({
-                    _id: prod._id,
-                    productImage: prod.productImage,
-                    availableQuantity: prod.availableQuantity,
-                    productName: prod.productName,
-                    productDescription: prod.productDescription,
-                    productCategory: prod.productCategory,
-                    productPrice: prod.productPrice,
-                    productQualities: prod.productQualities,
-                    productQuantity: '1',
-                    cloudinaryId: prod.cloudinaryId
-                })}
-                >
-                Add to Cart
-                </button>
+                <ProductItem prod={prod} addToCart={addToCart} />
             </div>
              )}
            </div>

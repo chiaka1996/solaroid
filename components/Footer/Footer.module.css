@@ -24,7 +24,14 @@
     color: grey;
     line-height: 42px;
     font-size: 14px;
-    cursor: pointer
+    cursor: pointer;
+}
+
+.footerNavLink{
+    color: grey;
+    line-height: 42px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .subLinkHeader{

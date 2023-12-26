@@ -2,10 +2,11 @@
     display: none;
 }
 .cartNav{
-    width: 38%;
+    width: 50%;
     margin: 10% auto 5% auto;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     position: relative;
     font-family: 'Satoshi';
     font-style: normal;
@@ -34,9 +35,9 @@
     background-color: #dad8d8;
 }
 
-.details, .payment{
-    padding: 0 0 0 12%;
-}
+/* .details, .payment{
+    text-align: right;
+} */
 
 
 .active{
@@ -52,4 +53,12 @@
     height: 2px;
     background-color: black;
     z-index: 2;
+}
+
+@media screen and (max-width: 900px){
+    .cartNav{
+        width: 95%;
+        margin: 20% auto 5% auto;
+        font-size: 13px;
+    }
 }

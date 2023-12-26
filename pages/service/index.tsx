@@ -20,7 +20,7 @@ const ServicePage = () => {
             <div className={style.bannerTextHeader}>Services</div>
             <div className={style.bannerSubText}>
                 Helping you save energy and 
-                keep the lights on.
+                keeping the lights on.
             </div>
             </div>
             </section>

@@ -9,4 +9,5 @@ export {default as Count} from "./AchievementCount/count"
 export {default as Banner} from "./ProductsBanner/banner"
 export {default as Cart} from "./Cart/cart"
 export {default as AdminNav} from "./adminNav/nav"
+export {default as ProductItem} from "./ProductList"
  

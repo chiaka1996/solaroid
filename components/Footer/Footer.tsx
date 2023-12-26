@@ -1,4 +1,5 @@
 import style from "./Footer.module.css"
+import Link from "next/link";
 
 const Footer = () => {
     return(
@@ -16,10 +17,26 @@ const Footer = () => {
            <section className={style.subFooterLink}>
             <div className={style.subLinkHeader}>Explore</div>
             <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Contact</li>
+                <li>
+                <Link href="/" style={{textDecoration: "none"}}>
+                <span className={style.footerNavLink}>Home</span>
+                </Link>
+                </li>       
+                <li>
+                <Link href="/about_us" style={{textDecoration: "none"}}>    
+                <span className={style.footerNavLink}>About</span>
+                </Link>
+                </li>
+                <li>
+                <Link href="/service" style={{textDecoration: "none"}}>
+                <span className={style.footerNavLink}>Services</span>
+                </Link>
+                </li>
+                <li>
+                <Link href="/contact_us" style={{textDecoration: "none"}}>
+                <span className={style.footerNavLink}>Contact</span>
+                </Link>
+                </li>
             </ul>
            </section>
 
