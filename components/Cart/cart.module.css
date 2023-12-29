@@ -332,4 +332,24 @@
   .continue{
     font-size: 18px;
   }
+
+  .emptyCart{
+    width: 100%;
+    margin: 0 0;
+    text-align: center;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: bold;
+}
+
+.emptyCartImg{
+    width: 70%;
+    height: 50vh;
+    margin: 0 15%;
+}
+
+.emptyCartBtn{
+    width: 70%;
+    height: 40px;
+}
 }

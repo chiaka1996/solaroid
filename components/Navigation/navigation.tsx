@@ -11,7 +11,7 @@ interface prop {
 }
 
 const Navigation = ({page}:prop) => {
-    const { bar, openBar, closeBar } = BarState();
+    const { bar, openBar, closeBar, cartItems } = BarState();
     const router = useRouter();
 
     const items = [
@@ -71,12 +71,15 @@ const Navigation = ({page}:prop) => {
                <div className={style.cartDiv}>
                 <div  className={style.cartImage}>
                 <Link href="/products/cart" style={{textDecoration: "none"}}>
+                <>
                <Image
                 width={50}
                 height={50}
                 src="https://img.icons8.com/ios/50/shopping-cart--v1.png" 
                 alt="shopping-cart--v1"
                 />
+                {cartItems.length > 0 ?  <div className={style.cartNotification}>{cartItems.length}</div>:''}
+                </>
                 </Link>
                 </div>
 
