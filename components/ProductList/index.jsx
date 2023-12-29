@@ -1,11 +1,13 @@
 import style from './productList.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BarState } from '../../context/context';
 
 
-const ProductList = ({prod, addToCart}) => {
+const ProductList = ({prod}) => {
+    const { addToCart } = BarState();
     return (
-        <div>
+        <div className={style.gridList}>
                 <div className={style.prodImage}>
                 <Image 
                 src={prod.productImage}

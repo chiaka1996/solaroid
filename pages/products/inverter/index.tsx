@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Banner, Navigation, SideBar, Footer, ProductItem } from "../../../components/index";
 import Image from "next/image";
 import style from "../product.module.css";
-import { BarState } from '../../../context/context';
+// import { BarState } from '../../../context/context';
 
 interface productTypes{
     _id: string,
@@ -21,7 +21,7 @@ interface productTypes{
 
 
 const Inverters = () => {
-    const { addToCart } = BarState();
+    // const { addToCart } = BarState();
     const [inverterProduct, setInverterProduct] = useState<productTypes[]>([]);
 
      // fetch all inverter products from the database
@@ -68,7 +68,7 @@ const Inverters = () => {
 
             <div className={style.productGrid}>
             {inverterProduct.map((prod, i) => <div className={style.gridItem} key={i}>
-            <ProductItem prod={prod} addToCart={addToCart} />
+            <ProductItem prod={prod} />
             </div>
              )}
             </div>

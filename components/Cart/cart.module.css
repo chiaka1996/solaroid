@@ -1,5 +1,5 @@
 .cartItems{
-    border-top: 1px solid #dad8d8;
+    /* border-top: 1px solid #dad8d8; */
     width: 80%;
     margin: 0 auto;
 }
@@ -204,6 +204,32 @@
     font-weight: bold;
     font-size: 20px;
     padding: 5% 0 0 0;
+}
+
+.emptyCart{
+    width: 60%;
+    margin: 0 20% 0 20%;
+    text-align: center;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: bold;
+}
+
+.emptyCartImg{
+    position: relative;
+    width: 40%;
+    height: 50vh;
+    margin: 0 30%;
+}
+
+.emptyCartBtn{
+    width: 40%;
+    height: 50px;
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+    border-radius: 5px;
+    margin: 2% 0;
 }
 
 @media only screen and (max-width: 1000px) {

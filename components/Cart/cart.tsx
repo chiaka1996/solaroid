@@ -15,6 +15,9 @@ const CartComponent = () => {
 
     return(
         <div>
+          <section>
+
+          </section>
              <section className={cs.cartItems}>
               {cartItems.map((item, i) => <div className={cs.item} key={i}>
                 <div className={cs.cartImgContainer}>
@@ -139,10 +142,15 @@ const CartComponent = () => {
                   </div>
                 
               </div>
-            {/* ) : (
-              ''
-            )} */}
-          </section> : ''}
+          </section> : <div className={cs.emptyCart}>
+            <div className={cs.emptyCartImg}>
+          <Image src='/cartImg/empty_cart.png' alt="cart list" layout="fill" />
+          </div>
+          <div>Your cart is empty</div>
+          <button  onClick={() => router.back()} className={cs.emptyCartBtn}>
+            Continue Shopping
+          </button>
+            </div>}
         </div>
     )
 }

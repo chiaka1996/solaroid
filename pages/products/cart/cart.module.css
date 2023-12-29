@@ -3,7 +3,7 @@
 }
 .cartNav{
     width: 50%;
-    margin: 10% auto 5% auto;
+    margin: 10% auto 2% auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
