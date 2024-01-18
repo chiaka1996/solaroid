@@ -50,6 +50,12 @@
     cursor: pointer;
 }
 
+.availableQuantity{
+    font-size: 12px;
+    font-weight: bold;
+    margin: 1% 0 0 0;
+    color: grey;
+}
 .clearamane{ 
     font-weight: 400;
     font-size: 24px;

@@ -10,4 +10,4 @@ export {default as Banner} from "./ProductsBanner/banner"
 export {default as Cart} from "./Cart/cart"
 export {default as AdminNav} from "./adminNav/nav"
 export {default as ProductItem} from "./ProductList"
- 
+export {default as Spinner} from "./spinner"

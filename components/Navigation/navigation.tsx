@@ -71,7 +71,7 @@ const Navigation = ({page}:prop) => {
                <div className={style.cartDiv}>
                 <div  className={style.cartImage}>
                 <Link href="/products/cart" style={{textDecoration: "none"}}>
-                <>
+                <div>
                <Image
                 width={50}
                 height={50}
@@ -79,7 +79,7 @@ const Navigation = ({page}:prop) => {
                 alt="shopping-cart--v1"
                 />
                 {cartItems.length > 0 ?  <div className={style.cartNotification}>{cartItems.length}</div>:''}
-                </>
+                </div>
                 </Link>
                 </div>
 

@@ -8,6 +8,8 @@ const ProductList = ({prod}) => {
     const { addToCart } = BarState();
     return (
         <div className={style.gridList}>
+                 <Link href={`/products/item/${prod._id}`} style={{textDecoration: "none"}}>
+                <div>
                 <div className={style.prodImage}>
                 <Image 
                 src={prod.productImage}
@@ -26,6 +28,8 @@ const ProductList = ({prod}) => {
                 />
                 <div className={style.price}>{prod.productPrice}</div>
                 </div>
+                </div>
+                </Link>
                 <button 
                 className={style.addToCartBtn}
                 onClick={() => addToCart({

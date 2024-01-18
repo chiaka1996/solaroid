@@ -1,23 +1,145 @@
-"use client"
-import { Navigation, SideBar } from "../../../../components/index";
-import { useState } from "react";
+// "use client"
+import { Navigation, SideBar, Spinner, Footer } from "../../../../components/index";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BarState } from '../../../../context/context';
 import Image from "next/image";
 import style from "../item.module.css"
 import Link from "next/link";
 
+interface productTypes{
+    _id: string,
+    productImage: string,
+    availableQuantity: string,
+    productName: string,
+    productDescription: string,
+    productCategory: string,
+    productPrice: string,
+    productQualities: string,
+    cloudinaryId: string,
+    __v: string
+}
+
 const SingleProduct = () => {
-    const [status, setStatus] = useState<boolean>(false);
-    const [listing, setListing] = useState<boolean>(false);
+    const router = useRouter()
+    const {addToCart, buyNow} = BarState();
+   
+    const [loading, setLoading] = useState<boolean>(true)
+    const [quantity, setQuantity] = useState<number>(1)
+    const [featuredProducts, setFeaturedProducts] = useState<productTypes[]>([])
+    const [product, setProduct] = useState<productTypes>({
+        _id: "",
+        productImage: "",
+        availableQuantity: "",
+        productName: "",
+        productDescription: "",
+        productCategory: "",
+        productPrice: "",
+        productQualities: "",
+        cloudinaryId: "",
+        __v: ""
+    })
+    const [prodQualityArr, setProductQualityArr] = useState<string[]>([])
+
+    const increaseQuantity = () => {
+        quantity < parseInt(product.availableQuantity) ? setQuantity(x => x+1) : '';
+    }
+
+    const decreaseQuantity = () => {
+        quantity > 1 ? setQuantity(x => x-1) : '';
+    }
+
+    const fetchFeaturedProducts = async (productCategory:string, _id:string) => {
+        try{
+        const httpRequest = await fetch(`../../../api/featuredproduct?category=${productCategory}&_id=${_id}`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        let response = await httpRequest.json()   
+       if(response.status){
+            setFeaturedProducts([...response.data])
+       }
+       else{
+        toast.error(`${response.message}`, {
+            position: "top-right",
+            theme: "colored",
+          });
+       }
+    }
+    catch(error:any){
+        toast.error(`${error.message}`, {
+            position: "top-right",
+            theme: "colored",
+          });
+       }
+    }
+
+    const fetchSingleProduct = async (_id:any) => {
+        try{
+        const httpRequest = await fetch(`../../api/getsingleproduct?_id=${_id}`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        let response = await httpRequest.json()   
+       if(response.status){
+        setLoading(false)
+        const {_id, productImage, availableQuantity, productName, productDescription, productCategory,
+                productPrice, productQualities, cloudinaryId, __v} = response.data;
+
+           setProduct({
+            _id,
+            productImage,
+            availableQuantity,
+            productName,
+            productDescription,
+            productCategory,
+            productPrice,
+            productQualities,
+            cloudinaryId,
+            __v
+           })
+           const splitArr = productQualities.split(',')
+           setProductQualityArr([...splitArr]);
+           fetchFeaturedProducts(productCategory, _id)
+       }
+       else{
+        toast.error(`${response.message}`, {
+            position: "top-right",
+            theme: "colored",
+          });
+       }
+    }
+    catch(error:any){
+        toast.error(`${error.message}`, {
+            position: "top-right",
+            theme: "colored",
+          });
+       }
+    }
+
+    useEffect(() =>{
+        // console.log(router.query.singleProduct)
+        router.query.singleProduct ?  fetchSingleProduct(router.query.singleProduct):''
+       
+    },[router.query])
 
     return(
         <main>
+        <ToastContainer />
         <Navigation page="products" />
         <SideBar page="products" />
+        {loading ? <Spinner /> : <div>
         <section className={style.itemContainer}>
             <div className={style.imgContainer}>
                 <div className={style.imgDiv}>
                 <Image
-                src="/home_imgs/battery.png"
+                src={product.productImage}
                 layout='fill'
                 alt="product img"
                 />
@@ -25,7 +147,7 @@ const SingleProduct = () => {
             </div>
 
             <div className={style.prodDescriptionContainer}>
-                <div className={style.prodHeader}>Solar Panel 300watts Battery</div>
+                <div className={style.prodHeader}>{product.productName}</div>
                 <div className={style.stars}>
                 <Image 
                     width={18}
@@ -66,46 +188,66 @@ const SingleProduct = () => {
                 src="https://img.icons8.com/material-outlined/24/naira.png" 
                 alt="naira"
                 />
-                <div className={style.price}>3000</div>
+                <div className={style.price}>{product.productPrice}</div>
                 </div>
 
-                <div className={style.brand}>
-                    Brand: <span>Biggy battery</span>
-                </div>
                 <div className={style.availability}>
-                Availability: <span>5 in stock</span>
+                Availability: <span>{product.availableQuantity} in stock</span>
                 </div>
 
                 <div className={style.briefDescription}>
-                100% cotton double printed dress. 
-                Black and white striped top and orange high waisted skater skirt bottom. 
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, 
-                earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+                {product.productDescription}
                 </div>
 
                 <div className={style.quantity}>
                 Quantity: 
                 <div className={style.quantityCount}>
-                    <span>-</span>
-                    <span>5</span>
-                    <span>+</span>
+                    <span onClick={() => decreaseQuantity()}>-</span>
+                    <span>{quantity}</span> 
+                    <span onClick={() => increaseQuantity()}>+</span>
                 </div>
                 </div>
 
                 <div className={style.addToCartContainer}>
-                <button className={style.addToCartBtn}>ADD TO CART</button>
-                <button className={style.buyNowBtn}>BUY NOW</button>
+                <button className={style.addToCartBtn}   onClick={() => addToCart({
+                    _id: product._id,
+                    productImage: product.productImage,
+                    availableQuantity: product.availableQuantity,
+                    productName: product.productName,
+                    productDescription: product.productDescription,
+                    productCategory: product.productCategory,
+                    productPrice: product.productPrice,
+                    productQualities: product.productQualities,
+                    productQuantity: quantity.toString(),
+                    cloudinaryId: product.cloudinaryId
+                })}>ADD TO CART</button>
+                 <Link
+                  href={'/products/shipping_details'}
+                  style={{ textDecoration: 'none' }}
+                >
+                <button className={style.buyNowBtn} onClick={() => buyNow({
+                    _id: product._id,
+                    productImage: product.productImage,
+                    availableQuantity: product.availableQuantity,
+                    productName: product.productName,
+                    productDescription: product.productDescription,
+                    productCategory: product.productCategory,
+                    productPrice: product.productPrice,
+                    productQualities: product.productQualities,
+                    productQuantity: quantity.toString(),
+                    cloudinaryId: product.cloudinaryId
+                })}>BUY NOW</button>
+                </Link>
                 </div>
             </div>
         </section>
 
         <section className={style.descriptionContainer}>
-        <div className={style.descriptionHeader}>Description</div>
+        <div className={style.descriptionHeader}>Product Qualities</div>
         <div className={style.mainDescription}>
-        100% cotton double printed dress. 
-        Black and white striped top and orange high waisted skater skirt bottom. 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, 
-        earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+            <ul>
+             {prodQualityArr.map((quality, i) => <li key={i}>{quality}</li>)}
+             </ul>
         </div>
 
         <div className={style.productDetails}></div>
@@ -115,53 +257,54 @@ const SingleProduct = () => {
         <div className={style.descriptionHeader}>Featured Products</div>
 
         <div className={style.productGrid}>
-            <div className={style.gridItem}>
+        {/* featured products */}
+        {featuredProducts.map((item, i) =>  <div className={style.gridItem} key={i}>
+                <Link href={`/products/item/${item._id}`} style={{textDecoration: "none"}}>
+                <div>
                 <div className={style.prodImage}>
                 <Image 
-                src="/home_imgs/battery.png"
+                src={item.productImage}
                 alt="battery"
                 layout='fill'
                 />
                 </div>
 
-                <div className={style.productsName}>solte battery</div>
+                <div className={style.productsName}>{item.productName}</div>
                 <div className={style.featuredCost}>
                 <Image 
-                width={16} 
-                height={16} 
-                src="https://img.icons8.com/material-outlined/16/naira.png" 
+                width={18} 
+                height={18} 
+                src="https://img.icons8.com/material-outlined/18/naira.png" 
                 alt="naira"
                 />
-                <div className={style.featuredPrice}>3000</div>
+                <div className={style.featuredPrice}>{item.productPrice}</div>
                 </div>
-                <button className={style.CartBtn}>Add to Cart</button>
-            </div>
-
-            <div className={style.gridItem}>
-            <div className={style.prodImage}>
-            <Image 
-            src="/home_imgs/battery.png"
-            alt="solar panel"
-            layout='fill'
-                />
-            </div>
-
-                <div className={style.productsName}>solte battery</div>
-                <div className={style.featuredCost}>
-                <Image 
-                width={16} 
-                height={16} 
-                src="https://img.icons8.com/material-outlined/16/naira.png" 
-                alt="naira"
-                />
-                <div className={style.featuredPrice}>3000</div>
                 </div>
-                <button className={style.CartBtn}>Add to Cart</button>
+                </Link>
+                <button className={style.cartBtn} 
+                    onClick={() => addToCart({
+                        _id: item._id,
+                        productImage: item.productImage,
+                        availableQuantity: item.availableQuantity,
+                        productName: item.productName,
+                        productDescription: item.productDescription,
+                        productCategory: item.productCategory,
+                        productPrice: item.productPrice,
+                        productQualities: item.productQualities,
+                        productQuantity: '1',
+                        cloudinaryId: item.cloudinaryId
+                    })}
+                >Add to Cart</button>
             </div>
+            )}
             </div>
         </section>
 
-      
+        <Footer />
+        </div>
+}  
+
+
         </main>
     )
 }

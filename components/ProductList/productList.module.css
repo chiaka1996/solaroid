@@ -5,6 +5,11 @@
     position: relative;
 }
 
+.gridList{
+    position: relative;
+    height: 40vh;
+}
+
 .gridList:hover{
     background-color: rgb(248, 245, 245);
 }
@@ -43,6 +48,7 @@
     margin: 2% 5%;
     border-radius: 10px;
     display: none;
+    position: relative;
 }
 
 .gridList:hover > .addToCartBtn{
@@ -50,6 +56,11 @@
 }
 
 @media screen and (max-width: 900px){
+    .gridList{
+        position: relative;
+        height: 42vh;
+    }
+
     .prodImage{
         width: 90%;
         height: 200px;
@@ -57,7 +68,11 @@
     }
 
     .addToCartBtn{
+        width: 100%;
         display: block;
-        margin: 0 5%;
+        margin: 0 0;
+        position: absolute;
+        bottom: 1%;
+        left: 0;
     }
 }

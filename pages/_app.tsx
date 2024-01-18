@@ -13,7 +13,6 @@ import type { AppProps } from 'next/app'
 function LoadingNewPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  console.log(loading)
 
   useEffect(() => {
     const handleStart = (url:any) => url !== router.asPath && setLoading(true);

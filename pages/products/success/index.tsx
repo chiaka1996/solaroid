@@ -1,8 +1,17 @@
 import {Navigation, SideBar} from "../../../components/index";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import style from './success.module.css'
+import { useState, useEffect } from "react";
 
 const Success = () => {
+  const router = useRouter();
+  const [name, setName] = useState<String>('');
+
+  useEffect(() => {
+    router.query.name &&  !Array.isArray(router.query.name) ? setName(router.query.name) : ''
+  }, [router.query.name])
+
   return (
     <main className={style.successContainer}>
       <Navigation page="products" />
@@ -18,7 +27,7 @@ const Success = () => {
         />
 
         <div className={style.successNote}>
-          Hey Bay, thank you for your purchase
+          Hey {name}, thank you for your purchase
         </div>
 
         <div className={style.successSubNote}>

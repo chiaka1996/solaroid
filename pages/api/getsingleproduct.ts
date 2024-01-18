@@ -2,11 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import ConnectMongo from '../../utilis/MongoDb/connectDb';
 import product from '../../Model/product';
 
-const getAllProducts = async (req:NextApiRequest, res:NextApiResponse) => {
+const getSingleProduct = async (req:NextApiRequest, res:NextApiResponse) => {
     try{
         await ConnectMongo();
-        const productCategory = req.query.category;
-        const request = await product.find({productCategory})
+        const _id = req.query._id;
+        console.log(_id)
+        const request = await product.findOne({_id})
         if(request) {
             res.status(200).json({
                 message: "products retrieved successfully",
@@ -24,7 +25,6 @@ const getAllProducts = async (req:NextApiRequest, res:NextApiResponse) => {
         }
     }
     catch(error:any){
-        console.log(error.message)
         return res.status(500).json({
             message: error.message,
             code: 500,
@@ -33,4 +33,4 @@ const getAllProducts = async (req:NextApiRequest, res:NextApiResponse) => {
     }
 }
 
-export default getAllProducts;
+export default getSingleProduct;

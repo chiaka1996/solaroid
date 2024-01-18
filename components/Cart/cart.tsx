@@ -36,17 +36,18 @@ const CartComponent = () => {
                       />
                     </div>
                   </div>
+                  <div className={cs.availableQuantity}>Available Quantity: {item.availableQuantity}</div>
 
                   <div className={cs.itemCount}>
                     <div className={cs.quantity}>
                       <span
-                      onClick={() => decreaseItemQuantity(i)}
+                      onClick={() => decreaseItemQuantity(i, item.availableQuantity)}
                       >
                       - 
                       </span>{' '}
                         {item.productQuantity}
                       <span  
-                      onClick={() => increaseItemQuantity(i)}> 
+                      onClick={() => increaseItemQuantity(i, item.availableQuantity)}> 
                       +
                       </span>
                     </div>

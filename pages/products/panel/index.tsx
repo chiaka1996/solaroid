@@ -67,7 +67,7 @@ const Panel = () => {
 
             <div className={style.productGrid}>
             {panelProduct.map((prod, i) => <div className={style.gridItem} key={i}>
-                <ProductItem prod={prod} addToCart={addToCart} />
+                <ProductItem prod={prod}  />
             </div>
              )}
            </div>

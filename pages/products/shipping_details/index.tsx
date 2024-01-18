@@ -1,19 +1,136 @@
+import { useState } from "react";
 import {Navigation, SideBar } from "../../../components/index";
-import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 import Image from "next/image";
 import cs from './shipping.module.css'
 import { BarState } from '../../../context/context';
+import { useRouter } from 'next/router'
+
+interface customerDetails{
+  email: string,
+  firstname: string,
+  lastname: string,
+  state: string,
+  city: string
+}
 
 
 const Shipping = () => {
-  const {cartItems} = BarState()
+  const router = useRouter();
+  const {cartItems, deleteAllFromCart} = BarState();
 
   let totalPrice: number = 0;
     for (let t = 0; t < cartItems.length; t++) {
       totalPrice = totalPrice + parseInt(cartItems[t].productPrice);
     }
+
+  const [phone, setPhone] = useState<string | null>(null);
+  const [itenary, setItenary] = useState<customerDetails>({
+    email: '',
+   firstname: '',
+   lastname: "",
+    state: "",
+    city: "",
+  })
+
+  const [emailError, setEmailError] = useState<string>('')
+  const [firstnameError, setFirstnameError] = useState<string>('')
+  const [lastnameError, setLastnameError] = useState<string>('')
+  const [phoneError, setPhoneError] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+
+ 
+  const onChangeItenary = (e:any) => {
+    const value = e.target.value.trim().toLowerCase();
+    const name = e.target.name;
+
+    setItenary({
+      ...itenary,
+      [name] : value
+    })
+
+  }
+
+  const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/i;
+  const phoneRegex = /^234[7-9]{1}[0-1]{1}[0-9]{8}$/i;
+  const nameRegex = /^\D{2,}/i
+
+
+  // when the confirm button is clicked
+  const onClickConfirm = async () => {
+    try{
+    setLoading(true)
+    setEmailError('')
+    setFirstnameError('')
+    setLastnameError('')
+    setPhoneError('')
+    const {email, firstname, lastname,  state, city} = itenary;
+    if(!email || !firstname || !lastname || !state || !city || !phone){
+      setLoading(false)
+      return  toast.error("please, fill all fields", {
+        position: "top-right",
+        theme: "colored",
+      });
+    }
+    if(!emailRegex.test(email) || !phoneRegex.test(phone) || !nameRegex.test(firstname) || !nameRegex.test(lastname)){
+      if(!emailRegex.test(email)){
+        setEmailError("invalid email")
+      }
+      if(!phoneRegex.test(phone)){
+        setPhoneError('incorrect phone number')
+      }
+      if(!nameRegex.test(firstname)){
+       setFirstnameError('invalid firstname')
+      }
+      if(!nameRegex.test(lastname)){
+        setLastnameError('invalid lastname')
+       }
+      setLoading(false)
+      return false
+    }
+
+    const data = {
+      email,
+      firstname,
+      lastname,
+      state,
+      city,
+      phone,
+      purchase: cartItems,
+      totalPrice: totalPrice + 5000
+    }
+
+    const httpRequest = await fetch('../../../api/purchasedproduct', {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+    })
+
+    const response = await httpRequest.json()  
+    
+    if(response.status){
+      deleteAllFromCart()
+      router.push(`/products/success?name=${firstname}`)
+    }
+  }
+  catch(error:any){
+    setLoading(false)
+    return toast.error(<div>{error.message}</div>, {
+      position: "top-right",
+      theme: "colored",
+    });
+  }  
+  }
+
+  
     return(
         <main>
+          <ToastContainer/>
         <Navigation page="products" />  
         <SideBar page="products" /> 
 
@@ -33,58 +150,108 @@ const Shipping = () => {
             <input
               type="email"
               name="email"
-            //   value={customerDetails.email}
-            //   onChange={onChangeCustomerDetails}
+              value={itenary.email}
+              onChange={onChangeItenary}
             />
             <div className={cs.checkboxContainer}>
               <input type="checkbox" className={cs.checkbox} />
               <span>Get updates about new drops and exclusive offers</span>
             </div>
-          </div>
-
-          <div className={cs.inputContainer}>
-            <label>Full name</label>
-            <input
-              type="text"
-              placeholder="Big cj"
-            //   value={customerDetails.fullName}
-              name="fullName"
-            //   onChange={onChangeCustomerDetails}
-            />
+            <div className={cs.error}>{emailError}</div>
           </div>
 
           <div className={cs.postalContainer}>
             <div>
-              <label>City</label>
+            <label>Firstname</label>
+            <input
+              type="text"
+              placeholder="chiaka"
+              value={itenary.firstname}
+              name="firstname"
+              onChange={onChangeItenary}
+            />
+            <div className={cs.error}>{firstnameError}</div>
+            </div>
+            <div>
+            <label>Lastname</label>
+            <input
+              type="text"
+              placeholder="newton"
+              value={itenary.lastname}
+              name="lastname"
+              onChange={onChangeItenary}
+            />
+            <div className={cs.error}>{lastnameError}</div>
+            </div>
+          </div>
+
+          <div className={cs.postalContainer}>
+            <div>
+              <label>State</label>
               <select
-                name="city"
-                // onChange={onChangeCustomerDetails}
-                // value={customerDetails.city}
+                name="state"
+                onChange={onChangeItenary}
+                value={itenary.state}
               >
+                 <option value=""></option>
                 <option value="lagos">Lagos</option>
               </select>
             </div>
 
             <div>
-              <label>Postal code</label>
-              <input
-                type="text"
-                placeholder="0011011"
-                name="postalCode"
-                // onChange={onChangeCustomerDetails}
-                // value={customerDetails.city}
-              />
+              <label>City</label>
+              <select
+                name="city"
+                onChange={onChangeItenary}
+                value={itenary.city}
+              >
+                 <option value=""></option>
+                <option value="lagos">Lagos</option>
+              </select>
             </div>
           </div>
 
           <div className={cs.inputContainer}>
             <label>Phone number</label>
-            <input type="text" placeholder="08012345698" />
+            <PhoneInput
+              country={'ng'}
+              onlyCountries={['ng']}
+              value={phone}              
+              onChange={phone => setPhone(phone)}
+              inputProps={{
+                name: 'phone',
+                required: true,
+                autoFocus: false
+              }}
+              containerStyle={{
+                outline: "none"
+              }}
+              buttonStyle={{
+                borderRadius: "10px 0 0 10px",
+                outline: "none"
+               
+              }}
+              inputStyle={
+                {
+                  outline: 'none !important',
+                  height: "50px",
+                  width: "100%",
+                  fontWeight: "400",
+                  fontSize:"16px",
+                  borderRadius: "10px",
+                  border: "0.1px solid #dad8d8",
+                  color: "#888888"
+              }
+              }
+            />
+            <div className={cs.error}>{phoneError}</div>
           </div>
           <div className={cs.buttonContainer}>
-            <Link href={`/cart/success`} style={{ textDecoration: 'none' }}>
-              <button>Confirm</button>
-            </Link>
+              <button 
+              onClick={onClickConfirm}
+              >
+              {loading ?  <div className={cs.spinnerContainer}></div> : "Confirm"}
+              </button>
           </div>
 
           {/* this div is to be viewed only on mobile */}
