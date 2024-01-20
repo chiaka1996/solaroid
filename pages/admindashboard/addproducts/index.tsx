@@ -196,7 +196,7 @@ const AddProducts = () => {
          }
         catch(error:any){
             setLoading(false)
-        toast.error(`${error.message}`, {
+        toast.error(<div>something went wromg, try again</div>, {
         position: "top-right",
         theme: "colored",
       });
@@ -297,7 +297,9 @@ const AddProducts = () => {
                 </div>
 
                 <div className={style.inputContainer}>
-                <label className={style.label}>Product Qualitites</label>
+                <label className={style.label}>Product Qualitites <span>
+                 (separate each quality with a comma.)    
+                </span></label>
                 <textarea 
                 name="productQualities"
                 value={product.productQualities}

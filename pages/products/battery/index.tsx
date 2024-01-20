@@ -1,10 +1,8 @@
 import {useState, useEffect} from 'react'
 import { Banner, Navigation, SideBar, Footer, ProductItem } from "../../../components/index";
-import Image from "next/image";
 import style from "../product.module.css"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BarState } from '../../../context/context';
 
 interface productTypes{
     _id: string,
@@ -20,7 +18,7 @@ interface productTypes{
 }
 
 const Battery = () => {
-    const { addToCart } = BarState();
+    // const { addToCart } = BarState();
     const [batteryProduct, setBatteryProduct] = useState<productTypes[]>([]);
 
     // fetch all battery products from the database
@@ -68,7 +66,7 @@ const Battery = () => {
 
             <div className={style.productGrid}>
             {batteryProduct.map((prod, i) => <div className={style.gridItem} key={i}>
-                <ProductItem prod={prod} addToCart={addToCart} />
+                <ProductItem prod={prod} />
             </div>
              )}
             </div>

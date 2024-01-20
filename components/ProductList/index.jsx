@@ -6,6 +6,21 @@ import { BarState } from '../../context/context';
 
 const ProductList = ({prod}) => {
     const { addToCart } = BarState();
+
+    //this function will help reduce the name of the product to two lines if name is greater than 41
+    const shortenProductName = (productname) => {
+    if(prod.productName.length > 35){
+        const splitName = productname.split("");
+        const slicedName  = splitName.slice(0,35);
+            slicedName.push('...')
+        const joinedName =  slicedName.join("");
+        return joinedName
+    }
+    else{
+        return productname
+    }
+    }
+
     return (
         <div className={style.gridList}>
                  <Link href={`/products/item/${prod._id}`} style={{textDecoration: "none"}}>
@@ -18,7 +33,7 @@ const ProductList = ({prod}) => {
                 />
                 </div>
 
-                <div className={style.productsName}>{prod.productName}</div>
+                <div className={style.productsName}>{shortenProductName(prod.productName)}</div>
                 <div className={style.cost}>
                 <Image 
                 width={18} 

@@ -20,7 +20,7 @@ interface productTypes{
 }
 
 const Panel = () => {
-    const { addToCart, cartItems } = BarState();
+    // const { addToCart, cartItems } = BarState();
     const [panelProduct, setPanelProduct] = useState<productTypes[]>([]);
 
     // fetch all panel products from the database
