@@ -45,7 +45,11 @@ const Inverters = () => {
        }
     }
     catch(error:any){
-        toast.error(`${error.message}`, {
+        // toast.error(`${error.message}`, {
+        //     position: "top-right",
+        //     theme: "colored",
+        //   });
+         toast.error('something is wrong', {
             position: "top-right",
             theme: "colored",
           });
