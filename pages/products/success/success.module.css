@@ -5,7 +5,7 @@
 
 .successSubContainer{
     text-align: center;
-    padding: 5% 0 10% 0;
+    padding: 2% 0 0 0;
     margin: 5% 0 0 0;
 }
 
@@ -20,6 +20,15 @@
     font-size: 28px;
     padding: 1% 0 0 0;
     color: #000000;
+}
+
+.successBtn{
+    margin: 0.5% auto;
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 2px;
+    color: rgb(41, 40, 40);
+    padding: 1% 2%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -49,5 +58,9 @@
     .successSubNote{
         font-size: 14px;
         color: #000000;
+    }
+
+    .successBtn{
+        margin: 5% auto;
     }
 }

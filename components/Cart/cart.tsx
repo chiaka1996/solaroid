@@ -74,7 +74,7 @@ const CartComponent = () => {
           
               <div style={{ width: '35%' }} className={cs.proceedDesktop}>
                 <Link
-                  href={'/products/shipping_details'}
+                  href={'/products/cart/shipping_details'}
                   style={{ textDecoration: 'none' }}
                 >
                   <button>Proceed to checkout</button>
@@ -126,7 +126,7 @@ const CartComponent = () => {
             {/* {page == 'cart' ? ( */}
               <div className={cs.proceedMobile}>
                 <Link
-                  href={'/products/shipping_details'}
+                  href={'/products/cart/shipping_details'}
                   style={{ textDecoration: 'none' }}
                 >
                   <div className={cs.btnHouse}>

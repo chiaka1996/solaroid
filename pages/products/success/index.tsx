@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import style from './success.module.css'
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Success = () => {
   const router = useRouter();
@@ -33,6 +34,10 @@ const Success = () => {
         <div className={style.successSubNote}>
           We will Contact you to discuss the Payment Process
         </div>
+
+        <Link href="/">
+          <button className={style.successBtn}>Continue Shopping</button>
+        </Link>
       </div>
     </main>
   );

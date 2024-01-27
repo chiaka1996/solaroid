@@ -1,12 +1,12 @@
 import { useState } from "react";
-import {Navigation, SideBar } from "../../../components/index";
+import {Navigation, SideBar } from "../../../../components/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import Image from "next/image";
 import cs from './shipping.module.css'
-import { BarState } from '../../../context/context';
+import { BarState } from '../../../../context/context';
 import { useRouter } from 'next/router'
 
 interface customerDetails{
@@ -103,7 +103,7 @@ const Shipping = () => {
       totalPrice: totalPrice + 5000
     }
 
-    const httpRequest = await fetch('../../../api/purchasedproduct', {
+    const httpRequest = await fetch('../../../../api/purchasedproduct', {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

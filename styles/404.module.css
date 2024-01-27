@@ -1,0 +1,35 @@
+.container{
+    width: 50%;
+    height: 100%;
+    margin: 10% auto;
+    text-align: center;
+}
+
+.imgDiv{
+    position: relative;
+    width: 60%;
+    height: 40vh;
+    background-color: red;
+    margin: 0 auto;
+}
+
+.backBtn{
+    margin: 2% 0 0 0;
+    padding: 0.5% 2%;
+    background-color: orange;
+    border: 1px solid orange;
+    outline: none;
+    color: rgb(32, 32, 32);
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 900px){
+    .container{
+        width: 100%;
+        margin: 30% auto;
+    }
+
+    .imgDiv{
+        width: 70%;
+    }
+}

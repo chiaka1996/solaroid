@@ -9,7 +9,7 @@ const ProductList = ({prod}) => {
 
     //this function will help reduce the name of the product to two lines if name is greater than 41
     const shortenProductName = (productname) => {
-    if(prod.productName.length > 35){
+    if(productname.length > 40){
         const splitName = productname.split("");
         const slicedName  = splitName.slice(0,35);
             slicedName.push('...')

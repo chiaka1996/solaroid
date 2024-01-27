@@ -23,6 +23,20 @@ interface productTypes{
 const ShowProducts =  () => {
     const [allProducts, setAllProducts] = useState<productTypes[]>([])
 
+     //this function will help reduce the name of the product to two lines if name is greater than 41
+     const shortenProductName = (productname:string) => {
+        if(productname.length > 40){
+            const splitName = productname.split("");
+            const slicedName  = splitName.slice(0,35);
+                slicedName.push('...')
+            const joinedName =  slicedName.join("");
+            return joinedName
+        }
+        else{
+            return productname
+        }
+        }
+
     // fetch all products from the database
     const fetchAllProducts = async () => {
         const httpRequest = await fetch('../../api/getallproducts', {
@@ -118,7 +132,7 @@ const ShowProducts =  () => {
                         layout="fill"
                     />
                 </div>
-                <div className={style.nameOfProduct}>{prod.productName}</div>
+                <div className={style.nameOfProduct}>{shortenProductName(prod.productName)}</div>
                 <div className={style.priceOfProduct}>
                 <Image 
                 width={16} 
@@ -177,7 +191,7 @@ const ShowProducts =  () => {
                     />
                 </div>
                 
-                <div className={style.nameOfProduct}>{prod.productName}</div>
+                <div className={style.nameOfProduct}>{shortenProductName(prod.productName)}</div>
                 
                 <div className={style.priceOfProduct}>
                 <Image 
@@ -235,7 +249,7 @@ const ShowProducts =  () => {
                         layout="fill"
                     />
                 </div>
-                <div className={style.nameOfProduct}>{prod.productName}</div>
+                <div className={style.nameOfProduct}>{shortenProductName(prod.productName)}</div>
                 <div className={style.priceOfProduct}>
                 <Image 
                 width={16} 

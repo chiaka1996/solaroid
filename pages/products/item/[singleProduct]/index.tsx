@@ -51,6 +51,20 @@ const SingleProduct = () => {
         quantity > 1 ? setQuantity(x => x-1) : '';
     }
 
+    //this function will help reduce the name of the product to two lines if name is greater than 41
+    const shortenProductName = (productname:String) => {
+        if(productname.length > 35){
+            const splitName = productname.split("");
+            const slicedName  = splitName.slice(0,35);
+                slicedName.push('...')
+            const joinedName =  slicedName.join("");
+            return joinedName
+        }
+        else{
+            return productname
+        }
+        }
+
     const fetchFeaturedProducts = async (productCategory:string, _id:string) => {
         try{
         const httpRequest = await fetch(`../../../api/featuredproduct?category=${productCategory}&_id=${_id}`, {
@@ -269,7 +283,7 @@ const SingleProduct = () => {
                 />
                 </div>
 
-                <div className={style.productsName}>{item.productName}</div>
+                <div className={style.productsName}>{shortenProductName(item.productName)}</div>
                 <div className={style.featuredCost}>
                 <Image 
                 width={18} 

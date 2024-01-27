@@ -5,7 +5,10 @@ import product from '../../Model/product';
 const getAllProducts = async (req:NextApiRequest, res:NextApiResponse) => {
     try{
         await ConnectMongo();
-        const productCategory = req.query.category;
+        let productCategory:String = req.query.category && !Array.isArray(req.query.category) ? req.query.category : '';
+        // capitalize the first letter of the string
+        productCategory = productCategory.charAt(0).toUpperCase() + productCategory.slice(1).toLowerCase();
+
         const request = await product.find({productCategory})
         if(request) {
             res.status(200).json({

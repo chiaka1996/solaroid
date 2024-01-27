@@ -2,7 +2,7 @@ import Link from 'next/link';
 import style from './nav.module.css';
 
 interface prop {
-    page: string;
+    page: String;
   }
 
 const nav = ({page}: prop) => {

@@ -14,9 +14,9 @@ const CartPage = () => {
         <div className={cs.details}>
           <div className={cs.list}>Shipping details</div>
         </div>
-        <div className={cs.payment}>
+        {/* <div className={cs.payment}>
           <div className={cs.list}>Payment details</div>
-        </div>
+        </div> */}
       </div>
       <Cart />
         </main>
