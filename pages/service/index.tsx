@@ -20,7 +20,7 @@ const ServicePage = () => {
             <div className={style.bannerTextHeader}>Services</div>
             <div className={style.bannerSubText}>
                 Helping you save energy and 
-                keeping the lights on.
+                Illuminating Your Future.
             </div>
             </div>
             </section>
@@ -45,12 +45,13 @@ const ServicePage = () => {
             </div>
 
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Solar Technology</div>
+            <div className={style.serviceHeader}>Residential Solar Solutions</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            Embrace renewable energy and transform your home into a powerhouse of 
+            sustainability with our residential solar solutions. Our experts design 
+            custom solar systems tailored to your energy needs, 
+            ensuring maximum efficiency and savings on your utility bills.
             </div>
             </section>
             </div>
@@ -74,12 +75,14 @@ const ServicePage = () => {
             </div>
            
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Solar Installation</div>
+            <div className={style.serviceHeader}>Commercial Solar Solutions</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            Elevate your business to new heights of sustainability and 
+            cost-efficiency with our commercial solar solutions.
+            From office buildings to industrial complexes, we design and 
+            install solar systems that optimize energy production, reduce operating costs, 
+            and enhance your corporate social responsibility.
             </div>
             </section>
             </div>
@@ -103,12 +106,14 @@ const ServicePage = () => {
             </div>
 
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Solar Equipment</div>
+            <div className={style.serviceHeader}>Solar Panel Installation</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            Our team of certified professionals specializes in seamless solar panel 
+            installations, utilizing the latest technologies and industry best practices. 
+            Whether it&apos;s rooftop installations or ground-mounted arrays, we ensure precision, 
+            durability, 
+            and aesthetics in every project we undertake.
             </div>
             </section>
             </div>
@@ -131,12 +136,14 @@ const ServicePage = () => {
             </div>
 
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Battery Materials</div>
+            <div className={style.serviceHeader}>Solar System Maintenance</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            Protect your investment and maintain peak performance with our 
+            comprehensive solar system maintenance services. From routine inspections 
+            to troubleshooting and repairs, 
+            our technicians keep your solar system operating at its optimal efficiency,
+             year after year.
             </div>
             </section>
             </div>
@@ -159,12 +166,13 @@ const ServicePage = () => {
             </div>
 
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Charge Controllers</div>
+            <div className={style.serviceHeader}>Energy Storage Solutions</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            Store excess solar energy for use during periods of low sunlight or as a 
+            backup power source during grid outages with our energy storage solutions.
+            Our advanced battery systems integrate seamlessly with your solar setup, 
+            providing reliable energy storage and enhancing your energy independence.
             </div>
             </section>
             </div>
@@ -187,12 +195,12 @@ const ServicePage = () => {
             </div>
 
             <section className={style.serviceMainNote}>
-            <div className={style.serviceHeader}>Maintenance</div>
+            <div className={style.serviceHeader}>Solar Financing and Incentives</div>
             <div className={style.serviceLine}></div>
             <div className={style.serviceNotes}>
-            lorep imsum lorep imsumlorep imsumlorep imsum lorep imsum
-            lorep imsumlorep imsumlorep imsum lorep imsumlorep imsum
-            lorep imsumlorep imsum lorep imsumlorep imsum
+            We understand that transitioning to solar energy is a significant investment. 
+            That&apos;s why we offer flexible financing options and help you navigate available 
+            incentives, tax credits, and rebates to make your solar journey affordable and rewarding.
             </div>
             </section>
             </div>
