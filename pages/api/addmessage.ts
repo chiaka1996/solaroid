@@ -1,6 +1,8 @@
 import ConnectMongo from '../../utilis/MongoDb/connectDb';
 import modelMessage from '../../Model/message';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import {mailOptions, transporter} from "../../Config/nodemailer";
+import { text } from 'stream/consumers';
 
 const Addmessage = async (req:NextApiRequest, res:NextApiResponse) => {
     try{
@@ -33,23 +35,34 @@ const Addmessage = async (req:NextApiRequest, res:NextApiResponse) => {
             })
         }
 
-        const saveMessage = new modelMessage({
-            name,
-            email,
+        // const saveMessage = new modelMessage({
+        //     name,
+        //     email,
+        //     subject,
+        //     message
+        // })
+
+        // const response = await saveMessage.save()
+
+        // if(response){
+        //     return res.status(200).json({
+        //         message: "message sent successfull",
+        //         status: true,
+        //         code: 200
+        //     })
+        // }
+
+        await transporter.sendMail({
+            ...mailOptions,
             subject,
-            message
+            html: `<!DOCTYPE html><html lang="en"><body><div class=""><h1>Solaroid Message</h1><p>Email:<span>${email}</span></p><p>Name:<span>${name}</span></p><p>message:<span>${message}</span></p></div></body></html>`
         })
 
-        const response = await saveMessage.save()
-
-        if(response){
-            return res.status(200).json({
-                message: "message sent successfull",
-                status: true,
-                code: 200
-            })
-        }
-
+        return res.status(200).json({
+            message: "message sent successfull",
+            status: true,
+            code: 200
+        })
 
 
     }
